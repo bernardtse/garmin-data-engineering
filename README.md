@@ -23,8 +23,8 @@ Our motivation is rooted in the belief that well-structured and accessible data 
 To get started with this project, clone the repository and install the required Python packages listed in `requirements.txt`. Ensure you have Python 3.x installed on your system.
 
 ```bash
-git clone <repository-url>
-cd data-engineering-project
+git clone <[repository-url](https://github.com/NidaB-C/garmin-data-engineering)>
+cd garmin-data-engineering
 pip install -r requirements.txt
 ```
 
