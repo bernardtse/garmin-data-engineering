@@ -1,47 +1,58 @@
-# Bridging the Digital Divide: A Global Perspective on Internet Access
 
-This initiative is designed to delve into the disparities in internet access worldwide, offering a comprehensive analysis of trends, impacts, and efforts aimed at achieving digital inclusion.
+## Project Overview
 
-## Project Rationale
+This project aims to develop a comprehensive data engineering solution to analyze exercise and fitness patterns captured through Garmin wearable devices. By leveraging data collected from an individual's Garmin watch, with explicit consent and a focus on privacy, we aim to transform this rich dataset into a structured database. This enables us to explore fitness trends, understand exercise habits across different ages and regions, and potentially improve personal health and fitness strategies.
 
-The digital divide—a term that captures the gap in access to information and communication technology (ICT) between different regions and demographics—is more than just a technological barrier; it's a reflection of economic and social inequalities. In an era where internet connectivity is pivotal for education, economic opportunities, and social inclusion, understanding and addressing this divide is crucial.
+Our motivation is rooted in the belief that well-structured and accessible data can unlock insights into exercise behaviors, aiding individuals and researchers in making informed decisions about physical activity. With a commitment to privacy and ethical data use, this project serves as a foundation for scalable data-driven analysis in the realm of personal fitness.
 
-## Objectives
+### Key Features
 
-- **Map the Global Digital Divide**: Employing advanced data visualization techniques to illustrate internet penetration rates, identifying regions lagging in digital access.
+- **ETL Workflow**: Implements a robust Extract, Transform, Load (ETL) process to ingest and refine fitness activity data.
+- **Database Design**: Utilizes a relational database structure with multiple tables to organize data efficiently, allowing for scalability and complex queries.
+- **Data Analysis Tools**: Includes methods for reading data from the database, enabling analysis and visualization through Pandas DataFrames and a Flask API for broader access.
+- **Privacy and Ethics**: Adheres to strict privacy guidelines, ensuring no personally identifiable information (PII) is stored or analyzed.
 
-- **Analyze Trends Over Time**: Leveraging temporal data analysis to track the evolution of internet access globally, pinpointing progress and setbacks over the past two decades.
+### Technical Stack
 
-- **Highlight Impact**: Correlating internet access with key socio-economic indicators to underscore the profound implications of digital connectivity on development.
+- **SQLite**: Chosen for its lightweight nature and ease of integration with Python, ideal for this project's scale and objectives.
+- **Pandas**: For data manipulation and transformation during the ETL process.
+- **Flask**: To provide an API interface for accessing and interacting with the stored data.
 
-- **Showcase Initiatives**: Documenting and visualizing global and local efforts to enhance digital access, highlighting innovative strategies to overcome the divide.
+### Getting Started
 
-## Data Sources and Integration
+To get started with this project, clone the repository and install the required Python packages listed in `requirements.txt`. Ensure you have Python 3.x installed on your system.
 
-- **World Bank Open Data**: A treasure trove for global internet usage, economic indicators, and developmental data. [Access here](https://data.worldbank.org/indicator)
+```bash
+git clone <repository-url>
+cd data-engineering-project
+pip install -r requirements.txt
+```
 
-- **ITU Data**: Offers granular insights into telecommunications infrastructure and accessibility. [Explore ITU](https://www.itu.int/en/ITU-D/Statistics/Pages/stat/default.aspx)
+Follow the instructions in the `setup.md` document to initialize the database and start the Flask API server.
 
-- **UNESCO**: Provides valuable data on the intersection of education and digital access. [View UNESCO data](http://data.uis.unesco.org/)
+### Usage
 
-## Database Integration
+- **ETL Process**: Run the ETL scripts to extract data from the CSV, transform it according to the project schema, and load it into the SQLite database.
+- **API Access**: Use the Flask API endpoints to query the database and retrieve JSON-formatted data for analysis or application integration.
 
-- **SQLite**: A lightweight, yet robust choice for handling structured data such as internet penetration rates and socio-economic indicators, facilitating complex queries and analysis.
+### Documentation
 
-## Visualization and User Interaction
+- **ETL Workflow**: Detailed documentation of the ETL process, including data transformation rules and loading strategies, is available in `docs/etl_workflow.md`.
+- **Database Schema**: The database design, including table structures and relationships, is described in `docs/db_design.md`. An Entity-Relationship Diagram (ERD) is also provided for visual reference.
+- **API Guide**: Instructions on utilizing the Flask API, including endpoint descriptions and example requests, can be found in `docs/api_usage.md`.
 
-- **Interactive Global Map**: Utilizing Leaflet or Plotly, this map will serve as a gateway to exploring internet access rates, enriched with clickable countries revealing in-depth data.
+### Ethical Considerations
 
-- **Trend Analysis Charts and Heatmaps**: Through Plotly and Seaborn, we'll visualize temporal trends and correlations, offering insights into the digital divide's dynamics.
+We are committed to maintaining the highest standards of privacy and ethics. The data used in this project has been provided with informed consent, strictly for non-commercial purposes. All analysis is conducted in a manner that ensures individuals' anonymity, with no PII being collected, stored, or analyzed. This project's design facilitates the addition of data from other individuals under similar ethical guidelines, aiming to enrich our understanding of fitness patterns while upholding our commitment to privacy and data protection.
 
-- **Efforts and Initiatives Visualization**: Interactive narratives and timelines will spotlight key initiatives, drawing from the database to tell the stories of progress and innovation.
 
-## Ethical Considerations and Storytelling
+### References
 
-Our approach prioritizes data privacy, accuracy, and ethical storytelling. We're committed to inclusivity, ensuring our visualizations are accessible to audiences worldwide, including those with limited internet access. Our narrative will balance the highlighting of areas with significant digital divides against showcasing tangible progress and inspiring hope.
+- Data Source: Garmin Connect (Data provided by an individual under consent)
+- Python Libraries: Pandas, SQLite3, Flask
 
-## Project Delivery
+### Acknowledgments
 
-The culmination of this project will be a web application, crafted with Flask or Django, serving as an interactive platform for users to engage with our findings. Our front end will focus on intuitive design and seamless user experience, while the back end ensures robust data processing. Comprehensive documentation will guide users, ensuring a rich, educational experience.
+We would like to thank all contributors and participants who have made this project possible. Special thanks to the individual who provided their fitness data, enabling this exploration into exercise and health analytics.
 
-This project is not just an analytical endeavour; it's a call to action for policymakers, educators, and the global community to forge paths towards universal digital inclusion. By providing a deep dive into the current state of global internet access, we aim to illuminate the road ahead in bridging the digital divide.
+---
