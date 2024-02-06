@@ -1,0 +1,11 @@
+ActivityTypeID,ActivityType
+AT001,Treadmill Running
+AT002,Running
+AT003,Indoor Rowing
+AT004,Pool Swimming
+AT005,Cardio
+AT006,Elliptical
+AT007,Other
+AT008,Walking
+AT009,Indoor Cycling
+AT010,Cycling
