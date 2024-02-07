@@ -55,4 +55,9 @@ We are committed to maintaining the highest standards of privacy and ethics. The
 
 We would like to thank all contributors and participants who have made this project possible. Special thanks to the individual who provided their fitness data, enabling this exploration into exercise and health analytics.
 
----
+### Credits / Collaborators / Team
+
+* [Aysha Gheewala](https://github.com/AyshaGheewala)
+* [Mohammad Nawaz](https://github.com/MoNawaz101)
+* [Sum Yeung Bernard Tse](https://github.com/bernardtse)
+* [Nida Ballinger-Chaudhary](https://github.com/NidaB-C)
