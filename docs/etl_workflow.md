@@ -29,5 +29,7 @@ A SQLite database schema is designed based on the exported CSV files. Each CSV f
 ### 5. SQLite Database Loading:
 Using SQLite, the database schema is created, and the CSV files are loaded into their respective tables. Foreign key constraints are enforced to maintain data integrity and relationships between tables.
 
+---
+
 ### Reasoning for SQLite Database:
 SQLite was chosen as the database management system due to its lightweight nature, ease of setup, and compatibility with a wide range of platforms. As this project involves relatively small-scale data processing and analysis, SQLite offers a simple yet efficient solution for storing and querying structured data. Additionally, SQLite's serverless architecture eliminates the need for complex server setups, making it suitable for standalone applications or projects where portability and simplicity are prioritized. Overall, SQLite provides a robust relational database solution that meets the requirements of this project while offering scalability and performance for future expansion if needed.
