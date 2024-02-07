@@ -20,7 +20,7 @@ Our motivation is rooted in the belief that well-structured and accessible data 
 
 ### Getting Started
 
-To get started with this project, clone the repository and install the required Python packages listed in `requirements.txt`. Ensure you have Python 3.x installed on your system.
+To get started with this project, clone the repository and install the required Python packages listed in `requirements.txt`. Ensure you have Python 3.2 installed on your system.
 
 ```bash
 git clone <(https://github.com/NidaB-C/garmin-data-engineering)>
@@ -48,8 +48,8 @@ We are committed to maintaining the highest standards of privacy and ethics. The
 
 ### References
 
-- Data Source: Garmin Connect (Data provided by an individual under consent)
-- Python Libraries: Pandas, SQLite3, Flask
+- **Data Source**: Garmin Connect (Data provided by an individual under consent)
+- **Python Libraries**: Pandas, SQLite3, Flask
 
 ### Acknowledgments
 
