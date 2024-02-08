@@ -1,9 +1,20 @@
+# Project 3
 
 ## Project Overview
 
 This project aims to develop a comprehensive data engineering solution to analyze exercise and fitness patterns captured through Garmin wearable devices. By leveraging data collected from an individual's Garmin watch, with explicit consent and a focus on privacy, we aim to transform this rich dataset into a structured database. This enables us to explore fitness trends, understand exercise habits across different ages and regions, and potentially improve personal health and fitness strategies.
 
 Our motivation is rooted in the belief that well-structured and accessible data can unlock insights into exercise behaviors, aiding individuals and researchers in making informed decisions about physical activity. With a commitment to privacy and ethical data use, this project serves as a foundation for scalable data-driven analysis in the realm of personal fitness.
+
+##Contents
+- [Key Features](Key-Features)
+- [Technical Stack](Technical-Stack)
+- [Getting Started](Getting-Started)
+- [Usage](Usage)
+- [Documentation](Documentation)
+- [Ethical Considerations](Ethical-Considerations)
+- [References](References)
+- [Acknowledgments](Acknowledgments)
 
 ### Key Features
 
@@ -37,9 +48,9 @@ Follow the instructions in the `setup.md` document to initialize the database an
 
 ### Documentation
 
-- **ETL Workflow**: Detailed documentation of the ETL process, including data transformation rules and loading strategies, is available in `docs/etl_workflow.md`.
-- **Database Schema**: The database design, including table structures and relationships, is described in `docs/db_design.md`. An Entity-Relationship Diagram (ERD) is also provided for visual reference.
-- **API Guide**: Instructions on utilizing the Flask API, including endpoint descriptions and example requests, can be found in `docs/api_usage.md`.
+- **ETL Workflow**: Detailed documentation of the ETL process, including data transformation rules and loading strategies, is available in [docs/etl_workflow.md](docs/etl_workflow.md).
+- **Database Schema**: The database design, including table structures and relationships, is described in [docs/db_design.md](docs/db_design.md). An Entity-Relationship Diagram (ERD) is also provided for visual reference.
+- **API Guide**: Instructions on utilizing the Flask API, including endpoint descriptions and example requests, can be found in [docs/api_usage.md](docs/api_usage.md).
 
 ### Ethical Considerations
 
