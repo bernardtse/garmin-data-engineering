@@ -32,8 +32,6 @@ def welcome():
             )   
 
 
-
-
 @app.route("/api/ActivityTypes")
 def activitytypes():
     session = Session(engine)
@@ -48,7 +46,7 @@ def activitytypes():
         
     return(jsonify(activity_type_dict))
 
-@app.route("/api/Activities")
+@app.route("/api/activities")
 def activities():
     session = Session(engine)
     execute_string = "select * from Activities"
@@ -65,6 +63,7 @@ def activities():
                                 "Title": activity[3]
                                })         
     return(jsonify(activities_dict))
+
 
 @app.route("/api/PerformanceMetrics")
 def performancemetrics():
