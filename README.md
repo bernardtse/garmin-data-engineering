@@ -1,6 +1,6 @@
 # Garmin Data Engineering
 
---
+---
 
 ## Project Overview
 
