@@ -1,4 +1,6 @@
-# Project 3
+# Garmin Data Engineering
+
+--
 
 ## Project Overview
 
