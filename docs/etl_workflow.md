@@ -2,7 +2,7 @@
 The ETL (Extract, Transform, Load) process in this project involves extracting data from a single large CSV file called Activities.csv, which contains comprehensive activity tracking data. The data is then transformed into multiple CSV files representing different entities, such as activity types, performance metrics, lap metrics, and elevation metrics. These CSV files are subsequently loaded into a SQLite database for efficient data management and analysis.
 
 ### 1. Extraction:
-All data is initially extracted from the main file, [Activities.csv](data/raw/Activities.csv). This file contains a wide range of information related to activity tracking sessions, including activity type, date, title, performance metrics, lap metrics, and elevation metrics.
+All data is initially extracted from the main file, [Activities.csv](../data/raw/Activities.csv). This file contains a wide range of information related to activity tracking sessions, including activity type, date, title, performance metrics, lap metrics, and elevation metrics.
 
 ### 2. Transformation:
 The extracted data undergoes transformation to ensure it meets the desired format and schema. Various transformations are applied, including:
