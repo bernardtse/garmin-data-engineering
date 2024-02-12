@@ -34,7 +34,7 @@ Our motivation is rooted in the belief that well-structured and accessible data 
 
 ### <a id="Getting-Started"></a>Getting Started
 
-To get started with this project, clone the repository and install the required Python packages listed in `requirements.txt`. Ensure you have Python 3.2 installed on your system.
+To get started with this project, clone the repository and install the required Python packages listed in [`requirements.txt`](api/requirements.txt). Ensure you have Python 3.2 installed on your system.
 
 ```bash
 git clone <(https://github.com/NidaB-C/garmin-data-engineering)>
@@ -42,7 +42,7 @@ cd garmin-data-engineering
 pip install -r requirements.txt
 ```
 
-Follow the instructions in the `setup.md` document to initialize the database and start the Flask API server.
+Follow the instructions in the [`setup.md`](setup.md) document to initialize the database and start the Flask API server.
 
 ### <a id="Usage"></a>Usage
 
@@ -51,9 +51,9 @@ Follow the instructions in the `setup.md` document to initialize the database an
 
 ### <a id="Documentation"></a>Documentation
 
-- **ETL Workflow**: Detailed documentation of the ETL process, including data transformation rules and loading strategies, is available in [docs/etl_workflow.md](docs/etl_workflow.md).
-- **Database Schema**: The database design, including table structures and relationships, is described in [docs/db_design.md](docs/db_design.md). An Entity-Relationship Diagram (ERD) is also provided for visual reference.
-- **API Guide**: Instructions on utilizing the Flask API, including endpoint descriptions and example requests, can be found in [docs/api_usage.md](docs/api_usage.md).
+- **ETL Workflow**: Detailed documentation of the ETL process, including data transformation rules and loading strategies, is available in [`docs/etl_workflow.md`](docs/etl_workflow.md).
+- **Database Schema**: The database design, including table structures and relationships, is described in [`docs/db_design.md`](docs/db_design.md). An Entity-Relationship Diagram (ERD) is also provided for visual reference.
+- **API Guide**: Instructions on utilizing the Flask API, including endpoint descriptions and example requests, can be found in [`docs/api_usage.md`](docs/api_usage.md).
 
 ### <a id="Ethical-Considerations"></a>Ethical Considerations
 
@@ -63,7 +63,7 @@ We are committed to maintaining the highest standards of privacy and ethics. The
 ### <a id="References"></a>References
 
 - **Data Source**: Garmin Connect (Data provided by an individual under consent)
-- **Python Libraries**: Pandas, SQLite3, Flask
+- **Python Libraries**: Pandas, SQLite3, Flask, nbconvert
 
 ### <a id="Acknowledgments"></a>Acknowledgments
 
