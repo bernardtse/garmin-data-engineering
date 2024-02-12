@@ -104,7 +104,7 @@ df['Activity ID'] = range(1, len(df) + 1)
 df.tail()
 
 
-# In[11]:
+# In[12]:
 
 
 # Merge df with activity_types_df on "Activity Type" to include "Activity Type ID"
@@ -115,7 +115,7 @@ merged_df = pd.merge(df, activity_types_df,
 merged_df.head(10)
 
 
-# In[12]:
+# In[63]:
 
 
 # Create the Activities Table - To record basic details about each activity.
@@ -123,14 +123,14 @@ activities_df = merged_df[['Activity ID','Activity Type ID', 'Date', 'Title']].c
 activities_df.head()
 
 
-# In[13]:
+# In[14]:
 
 
 # Export Activty Types to csv
 activities_df.to_csv('../data/processed/activities.csv', encoding='utf8',index=False)
 
 
-# In[14]:
+# In[15]:
 
 
 #Create Performance Metrics Table - To store specific performance metrics for deeper analysis of physical output.
@@ -138,13 +138,13 @@ performance_metrics_df = merged_df[['Activity ID','Activity Type ID', 'Distance'
 performance_metrics_df.head(10)
 
 
-# In[15]:
+# In[16]:
 
 
 performance_metrics_df.info()
 
 
-# In[16]:
+# In[17]:
 
 
 # Use apply with a lambda function to concatenate 'Activity ID' and 'Activity Type ID' into 'Performance ID'
@@ -154,7 +154,7 @@ performance_metrics_df['Performance ID'] = performance_metrics_df.apply(lambda x
 performance_metrics_df.head(10)
 
 
-# In[17]:
+# In[18]:
 
 
 # Explicitly create a copy of the DataFrame or slice for modification
@@ -170,7 +170,7 @@ performance_metrics_df['Avg Run Cadence'] = pd.to_numeric(performance_metrics_df
 performance_metrics_df.info()
 
 
-# In[18]:
+# In[19]:
 
 
 # Function to convert 'HH:MM:SS' to minutes
@@ -188,13 +188,13 @@ def convert_time_to_proportion(time_str):
 performance_metrics_df['Time (minutes)'] = performance_metrics_df['Time'].apply(convert_time_to_proportion)
 
 
-# In[19]:
+# In[20]:
 
 
 performance_metrics_df
 
 
-# In[20]:
+# In[21]:
 
 
 # Function to convert 'MM:SS' to a proportion of a minute
@@ -212,27 +212,27 @@ performance_metrics_df['Avg Pace (min/km)'] = performance_metrics_df['Avg Pace']
 performance_metrics_df['Best Pace (min/km)'] = performance_metrics_df['Best Pace'].apply(pace_to_proportion)
 
 
-# In[21]:
+# In[22]:
 
 
 performance_metrics_df.info()
 
 
-# In[22]:
+# In[65]:
 
 
 performance_metrics_df = performance_metrics_df[['Performance ID','Activity ID', 'Activity Type ID', 'Distance','Calories', 'Time (minutes)', 'Avg HR', 'Max HR', 'Aerobic TE', 'Avg Run Cadence', 'Avg Pace (min/km)', 'Best Pace (min/km)']]
 performance_metrics_df.head()
 
 
-# In[23]:
+# In[25]:
 
 
 # Export Performance Metrics to csv
 performance_metrics_df.to_csv('../data/processed/performance_metrics.csv', encoding='utf8',index=False)
 
 
-# In[24]:
+# In[32]:
 
 
 # Create Lap Times and Misc Metrics Table - To provide insights into pacing, rest intervals, and overall activity duration
@@ -240,7 +240,7 @@ lap_metrics_df = merged_df[['Activity ID','Activity Type ID','Best Lap Time', 'N
 lap_metrics_df.head()
 
 
-# In[25]:
+# In[33]:
 
 
 #Only retain metrics for AT001 and AT002 - Running and Treadmill Running 
@@ -250,7 +250,7 @@ filtered_lap_metrics_df = lap_metrics_df.loc[lap_metrics_df['Activity Type ID'].
 filtered_lap_metrics_df.head()
 
 
-# In[26]:
+# In[35]:
 
 
 # Generate a sequence of numbers starting from 1 up to the length of the DataFrame
@@ -267,13 +267,13 @@ filtered_lap_metrics_df = filtered_lap_metrics_df[cols]
 filtered_lap_metrics_df.head()
 
 
-# In[27]:
+# In[36]:
 
 
 filtered_lap_metrics_df.info()
 
 
-# In[28]:
+# In[37]:
 
 
 # Convert 'Distance.1' to float
@@ -288,7 +288,7 @@ filtered_lap_metrics_df['Lap Distance (km)'] = filtered_lap_metrics_df['Total Di
 filtered_lap_metrics_df
 
 
-# In[29]:
+# In[38]:
 
 
 # Function to convert time strings to minutes using regex
@@ -319,14 +319,14 @@ filtered_lap_metrics_df['Elapsed Time (min)'] = lap_metrics_df['Elapsed Time'].a
 filtered_lap_metrics_df.info()
 
 
-# In[30]:
+# In[40]:
 
 
 filtered_lap_metrics_df = filtered_lap_metrics_df[['Lap ID', 'Activity ID', 'Best Lap Time (min)', 'Number of Laps', 'Total Distance (km)', 'Lap Distance (km)','Moving Time (min)', 'Elapsed Time (min)']]
 filtered_lap_metrics_df
 
 
-# In[31]:
+# In[44]:
 
 
 # Calculate Q1, Q3, and IQR for 'Best Lap Time (min)'
@@ -346,20 +346,20 @@ filtered_metrics_df = filtered_lap_metrics_df[(filtered_lap_metrics_df['Best Lap
 filtered_metrics_df.info()
 
 
-# In[32]:
+# In[67]:
 
 
 filtered_metrics_df.head()
 
 
-# In[33]:
+# In[46]:
 
 
 # Export Lap Times Metrics to csv
 filtered_metrics_df.to_csv('../data/processed/lap_metrics.csv',encoding='utf8',index=False)
 
 
-# In[34]:
+# In[50]:
 
 
 # Create the Elevation Metrics Table - To analyze how elevation impacts activity performance and effort.
@@ -367,7 +367,7 @@ elevation_metrics_df = merged_df[['Activity ID','Total Ascent', 'Total Descent',
 elevation_metrics_df.head()
 
 
-# In[35]:
+# In[51]:
 
 
 # Replace '--' with np.nan in 'Total Ascent' and 'Total Descent' columns
@@ -381,7 +381,7 @@ elevation_metrics_df = elevation_metrics_df.dropna(subset=['Total Ascent', 'Tota
 elevation_metrics_df.head()
 
 
-# In[36]:
+# In[52]:
 
 
 # Reset the index of the DataFrame
@@ -399,13 +399,13 @@ elevation_metrics_df = elevation_metrics_df[cols]
 elevation_metrics_df.head()
 
 
-# In[37]:
+# In[53]:
 
 
 elevation_metrics_df.info()
 
 
-# In[38]:
+# In[56]:
 
 
 # Then convert the column to float before converting to int64 to handle NaN values (pandas stores NaN as float)
@@ -418,22 +418,30 @@ elevation_metrics_df['Max Elevation'] = pd.to_numeric(elevation_metrics_df['Max 
 elevation_metrics_df.info()
 
 
-# In[39]:
+# In[57]:
 
 
 elevation_metrics_df
 
 
-# In[40]:
+# In[58]:
 
 
 # Export Elevation Metrics to csv
 elevation_metrics_df.to_csv('../data/processed/elevation_metrics.csv',encoding='utf8',index=False)
 
 
-# ### Convert to .py 
+# Tables below seem to have incomplete information - can be explored at a future date. 
 
-# In[41]:
+# In[48]:
+
+
+# Create the Swimming Metrics Table - Dedicated to swimming activities, capturing strokes and efficiency.
+swimming_metrics_df = merged_df[['Activity ID','Total Strokes', 'Avg. Swolf', 'Avg Stroke Rate', 'Dive Time']].copy()
+swimming_metrics_df.head()
+
+
+# In[ ]:
 
 
 #Use nbconvert to export noteboook to transform.py in the etl directory 
