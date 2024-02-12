@@ -34,10 +34,10 @@ Our motivation is rooted in the belief that well-structured and accessible data 
 
 ### <a id="Getting-Started"></a>Getting Started
 
-To get started with this project, clone the repository and install the required Python packages listed in [`requirements.txt`](api/requirements.txt). Ensure you have Python 3.2 installed on your system.
+To get started with this project, clone the repository and install the required Python packages listed in [`requirements.txt`](requirements.txt). Ensure you have Python 3.2 installed on your system.
 
 ```bash
-git clone <(https://github.com/NidaB-C/garmin-data-engineering)>
+git clone https://github.com/NidaB-C/garmin-data-engineering
 cd garmin-data-engineering
 pip install -r requirements.txt
 ```
