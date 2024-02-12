@@ -1,106 +1,190 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[1]:
+
+
+import pandas as pd
 import sqlite3
+import os
 import pandas as pd
 
-# Define the path to the SQLite database
-db_path = '../database/activity_tracking.db'
 
-# Connect to the SQLite database (this will create the database if it doesn't exist)
-conn = sqlite3.connect(db_path)
+# In[9]:
+
+
+# Load csv file into pandas dataframe
+activity_types_df = pd.read_csv('../data/processed/activity_types.csv')
+activities_df = pd.read_csv('../data/processed/activities.csv')
+performance_df = pd.read_csv('../data/processed/performance_metrics.csv')
+laps_df = pd.read_csv('../data/processed/lap_metrics.csv')
+elevation_df = pd.read_csv('../data/processed/elevation_metrics.csv')
+
+
+# In[22]:
+
+
+# Creating SQLite database
+conn = sqlite3.connect('../database/database.sqlite')
 cursor = conn.cursor()
 
-# Function to load a CSV file into an SQLite table
-def load_csv_to_sqlite(csv_path, table_name, conn):
-    # Load the CSV file into a DataFrame
-    df = pd.read_csv(csv_path)
-    
-    # Convert the DataFrame to SQL
-    df.to_sql(table_name, conn, if_exists='replace', index=False)
 
-# Define your CSV paths and corresponding table names
-csv_files = {
-    '../data/processed/activities.csv': 'Activities',
-    '../data/processed/activity_types.csv': 'ActivityTypes',
-    '../data/processed/performance_metrics.csv': 'PerformanceMetrics',
-    '../data/processed/lap_metrics.csv': 'LapMetrics',
-    '../data/processed/elevation_metrics.csv': 'ElevationMetrics'
-}
+# In[23]:
 
-# Define the table schemas with primary and foreign keys
-table_schemas = {
-    'Activities': '''
-        DROP TABLE IF EXISTS Activities;
-        CREATE TABLE Activities (
-            ActivityID INTEGER PRIMARY KEY,
-            ActivityTypeID INTEGER,
-            Date DATETIME,
-            Title TEXT,
-            FOREIGN KEY (ActivityTypeID) REFERENCES ActivityTypes(ActivityTypeID)
-        );
-    ''',
-    'ActivityTypes': '''
-        DROP TABLE IF EXISTS ActivityTypes;
-        CREATE TABLE ActivityTypes (
-            ActivityTypeID INTEGER PRIMARY KEY,
-            ActivityType TEXT
-        );
-    ''',
-    'PerformanceMetrics': '''
-        DROP TABLE IF EXISTS PerformanceMetrics;
-        CREATE TABLE PerformanceMetrics (
-            PerformanceID INTEGER PRIMARY KEY,
-            ActivityID INTEGER,
-            ActivityTypeID INTEGER,
-            Distance REAL,
-            Calories REAL,
-            Time REAL,
-            AvgHR INTEGER,
-            MaxHR INTEGER,
-            AerobicTE REAL,
-            AvgRunCadence REAL,
-            AvgPace REAL,
-            BestPace REAL,
-            FOREIGN KEY (ActivityID) REFERENCES Activities(ActivityID),
-            FOREIGN KEY (ActivityTypeID) REFERENCES ActivityTypes(ActivityTypeID)
-        );
-    ''',
-    'LapMetrics': '''
-        DROP TABLE IF EXISTS LapMetrics;
-        CREATE TABLE LapMetrics (
-            LapID INTEGER PRIMARY KEY,
-            ActivityID INTEGER,
-            BestLapTime REAL,
-            NumberOfLaps INTEGER,
-            TotalDistance REAL,
-            LapDistance REAL,
-            MovingTime REAL,
-            ElapsedTime REAL,
-            FOREIGN KEY (ActivityID) REFERENCES Activities(ActivityID)
-        );
-    ''',
-    'ElevationMetrics': '''
-        DROP TABLE IF EXISTS ElevationMetrics;
-        CREATE TABLE ElevationMetrics (
-            ElevationMetricID INTEGER PRIMARY KEY,
-            ActivityID INTEGER,
-            TotalAscent INTEGER,
-            TotalDescent INTEGER,
-            MinElevation INTEGER,
-            MaxElevation INTEGER,
-            FOREIGN KEY (ActivityID) REFERENCES Activities(ActivityID)
-        );
-    '''
-}
 
-# Execute table schema scripts
-for table_name, table_schema in table_schemas.items():
-    cursor.executescript(table_schema)
+# Table Definition
+create_table_1 = '''CREATE TABLE IF NOT EXISTS ActivityTypes(
+                ActivityTypeID Text PRIMARY KEY,
+                ActivityType Text NOT NULL);
+                '''
 
-# Load CSV files into SQLite database
-for csv_path, table_name in csv_files.items():
-    load_csv_to_sqlite(csv_path, table_name, conn)
+# Creating the table into our database
+cursor.execute(create_table_1)
 
-# Commit changes and close the connection
+
+# In[24]:
+
+
+# insert the data from the DataFrame into the SQLite table
+activity_types_df.to_sql('ActivityTypes', conn, if_exists='replace', index = False)
+
+# Printing pandas dataframe
+pd.read_sql('''SELECT * FROM ActivityTypes''', conn)
+
+
+# In[25]:
+
+
+# Table Definition
+create_table_2 = '''CREATE TABLE IF NOT EXISTS Activities (
+                ActivityID Integer PRIMARY KEY, 
+                ActivityTypeID Text NOT NULL, 
+                Date Datetime, 
+                Title Text NOT NULL,
+                FOREIGN KEY (ActivityTypeID) REFERENCES ActivityTypes (ActivityTypeID)
+                );
+                '''
+
+# Creating the table into our database
+cursor.execute(create_table_2)
+
+
+# In[26]:
+
+
+# insert the data from the DataFrame into the SQLite table
+activities_df.to_sql('Activities', conn, if_exists='replace', index = False)
+
+# Printing pandas dataframe
+pd.read_sql('''SELECT * FROM Activities''', conn)
+
+
+# In[27]:
+
+
+# Table Definition
+create_table_3 = '''CREATE TABLE IF NOT EXISTS PerformanceMetrics (
+                PerformanceID Text PRIMARY KEY, 
+                ActivityID Integer NOT NULL, 
+                ActivityTypeID Text NOT NULL, 
+                Distance Float NOT NULL, 
+                Calories Float NOT NULL, 
+                TimeMinutes Float NOT NULL, 
+                AvgHR Integer NOT NULL, 
+                MaxHR Integer NOT NULL, 
+                AerobicTE Float NOT NULL, 
+                AvgRunCadence Float NOT NULL, 
+                AvgPaceMinKm Float NOT NULL, 
+                BestPaceMinKm Float NOT NULL, 
+                FOREIGN KEY (ActivityID) REFERENCES Activities (ActivityID), 
+                FOREIGN KEY (ActivityTypeID) REFERENCES ActivityTypes (ActivityTypeID)
+                );
+                '''
+
+# Creating the table into our database
+cursor.execute(create_table_3)
+
+
+# In[28]:
+
+
+# insert the data from the DataFrame into the SQLite table
+performance_df.to_sql('PerformanceMetrics', conn, if_exists='replace', index = False)
+
+# Printing pandas dataframe
+pd.read_sql('''SELECT * FROM PerformanceMetrics''', conn)
+
+
+# In[29]:
+
+
+# Table Definition
+create_table_4 = '''CREATE TABLE IF NOT EXISTS LapMetrics (
+                LapID Text PRIMARY KEY, 
+                ActivityID Integer NOT NULL, 
+                BestLapTimeMin Float NOT NULL, 
+                NumberOfLaps Integer NOT NULL, 
+                TotalDistanceKm Float NOT NULL, 
+                LapDistanceKm Float NOT NULL, 
+                MovingTimeMin Float NOT NULL, 
+                ElapsedTimeMin Float NOT NULL, 
+                FOREIGN KEY (ActivityID) REFERENCES Activities (ActivityID)
+                );
+                '''
+
+# Creating the table into our database
+cursor.execute(create_table_4)
+
+
+# In[30]:
+
+
+# insert the data from the DataFrame into the SQLite table
+laps_df.to_sql('LapMetrics', conn, if_exists='replace', index = False)
+
+# Printing pandas dataframe
+pd.read_sql('''SELECT * FROM LapMetrics''', conn)
+
+
+# In[31]:
+
+
+# Table Definition
+create_table_5 = '''CREATE TABLE IF NOT EXISTS ElevationMetrics (
+                ElevationMetricID Text PRIMARY KEY, 
+                ActivityID Integer NOT NULL, 
+                TotalAscent Integer NOT NULL, 
+                TotalDescent Integer NOT NULL, 
+                MinElevation Integer NOT NULL, 
+                MaxElevation Integer NOT NULL, 
+                FOREIGN KEY (ActivityID) REFERENCES Activities (ActivityID)
+                );
+                '''
+
+# Creating the table into our database
+cursor.execute(create_table_5)
+
+
+# In[32]:
+
+
+# insert the data from the DataFrame into the SQLite table
+elevation_df.to_sql('ElevationMetrics', conn, if_exists='replace', index = False)
+
+# Printing pandas dataframe
+pd.read_sql('''SELECT * FROM ElevationMetrics''', conn)
+
+
+# In[33]:
+
+
+# commit the changes and close the connection
 conn.commit()
+
+
+# In[34]:
+
+
+# close the connection
 conn.close()
 
-print("CSV files have been successfully loaded into the SQLite database.")
