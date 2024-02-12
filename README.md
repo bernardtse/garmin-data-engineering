@@ -1,6 +1,6 @@
 # Garmin Data Engineering
 
-<img width="372" alt="Picture 1" src="https://github.com/NidaB-C/garmin-data-engineering/assets/147389952/8a9e8075-e8ee-49ff-99a4-1abfe3402149">
+<img width="1353" alt="Screenshot 2024-02-12 at 8 08 17 PM" src="https://github.com/NidaB-C/garmin-data-engineering/assets/147389952/5b8d2d52-f904-42f5-8b78-93c0f277d8fb">
 
 ## Project Overview
 
