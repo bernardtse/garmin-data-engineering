@@ -21,15 +21,9 @@ laps_df = pd.read_csv('../data/processed/lap_metrics.csv')
 elevation_df = pd.read_csv('../data/processed/elevation_metrics.csv')
 
 
-# In[22]:
-
-
 # Creating SQLite database
 conn = sqlite3.connect('../database/database.sqlite')
 cursor = conn.cursor()
-
-
-# In[23]:
 
 
 # Table Definition
@@ -42,17 +36,11 @@ create_table_1 = '''CREATE TABLE IF NOT EXISTS ActivityTypes(
 cursor.execute(create_table_1)
 
 
-# In[24]:
-
-
 # insert the data from the DataFrame into the SQLite table
 activity_types_df.to_sql('ActivityTypes', conn, if_exists='replace', index = False)
 
 # Printing pandas dataframe
 pd.read_sql('''SELECT * FROM ActivityTypes''', conn)
-
-
-# In[25]:
 
 
 # Table Definition
@@ -67,10 +55,6 @@ create_table_2 = '''CREATE TABLE IF NOT EXISTS Activities (
 
 # Creating the table into our database
 cursor.execute(create_table_2)
-
-
-# In[26]:
-
 
 # insert the data from the DataFrame into the SQLite table
 activities_df.to_sql('Activities', conn, if_exists='replace', index = False)

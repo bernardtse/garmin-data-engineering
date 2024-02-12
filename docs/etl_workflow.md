@@ -17,11 +17,11 @@ The extracted data undergoes transformation to ensure it meets the desired forma
 ### 3. Loading:
 Transformed data is exported to separate CSV files corresponding to different entities:
 
-- **[activities.csv](data/processed/activities.csv)**: Contains basic details about each activity, such as activity ID, activity type ID, date, and title.
-- **[activity_types.csv](data/processed/activity_types.csv)**: Provides a reference table for activity types, with unique activity type IDs and corresponding names.
-- **[performance_metrics.csv](data/processed/performance_metrics.csv)**: Stores specific performance metrics for deeper analysis, including distance, calories burned, time, heart rate, and pace.
-- **[lap_metrics.csv](data/processed/lap_metrics.csv)**: Captures lap-specific metrics such as lap time, number of laps, total distance, and moving/elapsed time.
-- **[elevation_metrics.csv](data/processed/elevation_metrics.csv)**: Records elevation-related metrics, including total ascent, total descent, and minimum/maximum elevation.
+- **[activities.csv](../data/processed/activities.csv)**: Contains basic details about each activity, such as activity ID, activity type ID, date, and title.
+- **[activity_types.csv](../data/processed/activity_types.csv)**: Provides a reference table for activity types, with unique activity type IDs and corresponding names.
+- **[performance_metrics.csv](../data/processed/performance_metrics.csv)**: Stores specific performance metrics for deeper analysis, including distance, calories burned, time, heart rate, and pace.
+- **[lap_metrics.csv](../data/processed/lap_metrics.csv)**: Captures lap-specific metrics such as lap time, number of laps, total distance, and moving/elapsed time.
+- **[elevation_metrics.csv](../data/processed/elevation_metrics.csv)**: Records elevation-related metrics, including total ascent, total descent, and minimum/maximum elevation.
 
 ### 4. SQLite Database Creation:
 A SQLite database schema is designed based on the exported CSV files. Each CSV file represents a table in the database, with appropriate primary and foreign keys defined to establish relationships between tables.
