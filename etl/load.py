@@ -1,17 +1,7 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import pandas as pd
 import sqlite3
 import os
 import pandas as pd
-
-
-# In[9]:
-
 
 # Load csv file into pandas dataframe
 activity_types_df = pd.read_csv('../data/processed/activity_types.csv')
@@ -20,11 +10,9 @@ performance_df = pd.read_csv('../data/processed/performance_metrics.csv')
 laps_df = pd.read_csv('../data/processed/lap_metrics.csv')
 elevation_df = pd.read_csv('../data/processed/elevation_metrics.csv')
 
-
 # Creating SQLite database
 conn = sqlite3.connect('../database/database.sqlite')
 cursor = conn.cursor()
-
 
 # Table Definition
 create_table_1 = '''CREATE TABLE IF NOT EXISTS ActivityTypes(
@@ -35,13 +23,11 @@ create_table_1 = '''CREATE TABLE IF NOT EXISTS ActivityTypes(
 # Creating the table into our database
 cursor.execute(create_table_1)
 
-
 # insert the data from the DataFrame into the SQLite table
 activity_types_df.to_sql('ActivityTypes', conn, if_exists='replace', index = False)
 
 # Printing pandas dataframe
 pd.read_sql('''SELECT * FROM ActivityTypes''', conn)
-
 
 # Table Definition
 create_table_2 = '''CREATE TABLE IF NOT EXISTS Activities (
@@ -61,10 +47,6 @@ activities_df.to_sql('Activities', conn, if_exists='replace', index = False)
 
 # Printing pandas dataframe
 pd.read_sql('''SELECT * FROM Activities''', conn)
-
-
-# In[27]:
-
 
 # Table Definition
 create_table_3 = '''CREATE TABLE IF NOT EXISTS PerformanceMetrics (
@@ -88,19 +70,11 @@ create_table_3 = '''CREATE TABLE IF NOT EXISTS PerformanceMetrics (
 # Creating the table into our database
 cursor.execute(create_table_3)
 
-
-# In[28]:
-
-
 # insert the data from the DataFrame into the SQLite table
 performance_df.to_sql('PerformanceMetrics', conn, if_exists='replace', index = False)
 
 # Printing pandas dataframe
 pd.read_sql('''SELECT * FROM PerformanceMetrics''', conn)
-
-
-# In[29]:
-
 
 # Table Definition
 create_table_4 = '''CREATE TABLE IF NOT EXISTS LapMetrics (
@@ -119,19 +93,11 @@ create_table_4 = '''CREATE TABLE IF NOT EXISTS LapMetrics (
 # Creating the table into our database
 cursor.execute(create_table_4)
 
-
-# In[30]:
-
-
 # insert the data from the DataFrame into the SQLite table
 laps_df.to_sql('LapMetrics', conn, if_exists='replace', index = False)
 
 # Printing pandas dataframe
 pd.read_sql('''SELECT * FROM LapMetrics''', conn)
-
-
-# In[31]:
-
 
 # Table Definition
 create_table_5 = '''CREATE TABLE IF NOT EXISTS ElevationMetrics (
@@ -148,26 +114,14 @@ create_table_5 = '''CREATE TABLE IF NOT EXISTS ElevationMetrics (
 # Creating the table into our database
 cursor.execute(create_table_5)
 
-
-# In[32]:
-
-
 # insert the data from the DataFrame into the SQLite table
 elevation_df.to_sql('ElevationMetrics', conn, if_exists='replace', index = False)
 
 # Printing pandas dataframe
 pd.read_sql('''SELECT * FROM ElevationMetrics''', conn)
 
-
-# In[33]:
-
-
 # commit the changes and close the connection
 conn.commit()
-
-
-# In[34]:
-
 
 # close the connection
 conn.close()
