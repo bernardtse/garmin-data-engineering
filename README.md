@@ -4,9 +4,9 @@
 
 ## Project Overview
 
-This project aims to develop a comprehensive data engineering solution to analyze exercise and fitness patterns captured through Garmin wearable devices. By leveraging data collected from an individual's Garmin watch, with explicit consent and a focus on privacy, we aim to transform this rich dataset into a structured database. This enables us to explore fitness trends, understand exercise habits across different ages and regions, and potentially improve personal health and fitness strategies.
+This project aims to develop a comprehensive data engineering solution to analyze exercise and fitness patterns captured through Garmin wearable devices. By leveraging data collected from an individual's Garmin watch, with explicit consent and a focus on privacy, we aim to transform this rich dataset into a structured database. Through additional visualisation efforts by application or web developers, individuals have the opportunity to track and enhance their personal health and fitness strategies.
 
-Our motivation is rooted in the belief that well-structured and accessible data can unlock insights into exercise behaviors, aiding individuals and researchers in making informed decisions about physical activity. With a commitment to privacy and ethical data use, this project serves as a foundation for scalable data-driven analysis in the realm of personal fitness.
+Our motivation is rooted in the belief that well-structured and accessible data can unlock insights into exercise behaviours, aiding individuals and researchers in making informed decisions about physical activity. With a commitment to privacy and ethical data use, this project serves as a foundation for scalable data-driven analysis in the realm of personal fitness.
 
 ### Contents
 - [Key Features](#Key-Features)
