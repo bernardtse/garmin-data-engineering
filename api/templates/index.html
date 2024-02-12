@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garmin fitness data</title>
+    <!-- CSS For Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.1.3/dist/cosmo/bootstrap.min.css" integrity="sha256-iMtue7kH6spfqTbfU9XGcwtBF8bgiOnVTErTuh7LJr8=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    
+</head>
+
+<body>
+
+<!-- Header & Navbar -->
+<nav class="navbar-right navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <div class="container-fluid pb-2">
+            <a class="navbar-brand d-flex justify-content-center p-2" href="/">
+                <h1 class="mt-3">&ensp;Garmin Device Fitness Data </h1></a>
+        </div>
+    </div>
+</nav>
+
+<div class="flex-container">
+<!--    <div class="flex-item"><div class="col-md-6 mt-4"></div><img width="300px" src="../static/images/gym.jpg"><div class = "col-md-6 mt-4"><p>{{ message }}</p></div> -->
+    <div class="flex-item">
+        <!--Bumf at the beginning-->
+        <div class="row row-cols-1">
+            <div class="col-md-3 mt-4"><p>Write some information here</p></div>
+        </div>    
+        <!--Titles-->
+        <div class="row row-cols-4">
+            <div></div>
+            <div class="col-md-3 mt-4"><h3>Information</h3></div>
+            <div class="col-md-2 mt-4"><h3>Basic Endpoint</h3></div>
+            <div class="col-md-4 mt-4"><h3>Additional Endpoints</h3></div>
+        </div>
+        <!--Types of activities-->
+        <div class="row row-cols-4">
+            <div class="col-md-3 mt-4"><img width="300px" src="../static/images/gym.jpg"></div>
+            <div class="col-md-3 mt-1"><p><u><h5>Types of Activities</h5></u>This endpoint provides data on the types of activities undertaken</p></div>
+            <div class="col-md-2 mt-4"><p>{{ message[0] }}</p></div>
+            <div></div>
+        </div>
+        <!--Activities-->
+        <div class="row row-cols-4">
+            <div class="col-md-3 mt-4"><img width="300px" src="../static/images/cycle.jpg"></div>
+            <div class="col-md-3 mt-1"><p><u><h5>Activities</h5></u>These end points provide data on the activities undertaken with information about the type of activity, duration etc.<br>Dates need to be provided in the form YYYY-MM-DD</p></div>
+            <div class="col-md-2 mt-4"><p>{{ message[1] }}</p></div>
+            <div class="col-md-4 mt-4"><p>{{ message[2]}}<br>{{message[3]}}<br>{{message[4]}}<br></p></div>
+        </div>
+        <!--Performance Metrics-->
+        <div class="row row-cols-4">
+            <div class="col-md-3 mt-4"><img width="300px" src="../static/images/performance_metrics.webp"></div>
+            <div class="col-md-3 mt-1"><p><u><h5>Performance Metrics</h5></u>These end points provide performance data on the activities undertaken such as length of time, calories etc.</p></div>
+            <div class="col-md-2 mt-4"><p>{{ message[5] }}</p></div>
+            <div class="col-md-4 mt-4"><p>{{ message[6]}}<br>{{message[7]}}</p></div>
+        </div>
+        <!--Lap Metrics-->
+        <div class="row row-cols-4">
+            <div class="col-md-3 mt-4"><img width="300px" src="../static/images/laps.jpg"></div>
+            <div class="col-md-3 mt-1"><p><u><h5>Lap Metrics</h5></u>These end points provide lap data for the running activities</p></div>
+            <div class="col-md-2 mt-4"><p>{{ message[8] }}</p></div>
+            <div class="col-md-4 mt-4"><p>{{ message[9]}}<br></p></div>
+        </div>
+        <!--Evelvation Metrics-->
+        <div class="row row-cols-4">
+            <div class="col-md-3 mt-4"><img width="300px" src="../static/images/hilly terrain.jpg"></div>
+            <div class="col-md-3 mt-1"><p><u><h5>Elevation Metrics</h5></u>These end points provide elevation data for the running activities</p></div>
+            <div class="col-md-2 mt-4"><p>{{ message[10] }}</p></div>
+            <div class="col-md-4 mt-4"><p>{{ message[11]}}<br>{{message[7]}}</p></div>
+        </div>
+    </div>
+    <div class="flex-item"></div>
+  </div>
+
+
+</body>
+
+</html>

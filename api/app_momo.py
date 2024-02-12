@@ -2,15 +2,10 @@
 import numpy as np
 import datetime as dt
 from datetime import datetime
-from dateutil.relativedelta import relativedelta
 
-import sqlalchemy
-from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine, func
-from sqlalchemy import desc
-
-from flask import Flask, jsonify
+from sqlalchemy import create_engine
+from flask import Flask, jsonify, render_template
 
 
 engine = create_engine("sqlite:///../database/database.sqlite")
@@ -19,20 +14,32 @@ app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 
 @app.route("/")
-def welcome():
+def home():
 
-    """List all available api routes."""
-    return (
-            f"Available Routes:<br/><br/>"
-            f"/api/ActivityTypes<br/><br/>"
-            f"/api/Activities<br/><br/>"
-            f"/api/PerformanceMetrics<br/><br/>"
-            f"/api/LapMetrics<br/><br/>"
-            f"/api/ElevationMetrics<br/><br/>"
-            )   
+    message=["/api/activity-types",
+             "/api/activities/all",
+             "/api/activities/activity-type/{ActivityTypeID}",
+             "/api/activities/limit/{number_of_records}",
+             "/api/activities/date/{start_date}}/{end_date}",
+             "/api/performance-metrics/all",
+             "/api/performance-metrics/activity-type/{activity_type_id}",
+             "/api/performance-metrics/limit/{number of records}",            
+             "/api/lap-metrics/all",
+             "/api/lap-metrics/limit/{number_of_records}",            
+             "/api/elevation-metrics/all",
+             "/api/elev-metrics/limit/{number_of_records}"]
+
+    return render_template ("index.html",message=message)
 
 
-@app.route("/api/ActivityTypes")
+
+
+
+##################################################################################
+# Routes for the activity types data table
+##################################################################################
+
+@app.route("/api/activity-types")
 def activitytypes():
     session = Session(engine)
     execute_string = "select * from ActivityTypes"
@@ -46,13 +53,174 @@ def activitytypes():
         
     return(jsonify(activity_type_dict))
 
-@app.route("/api/activities")
-def activities():
-    session = Session(engine)
-    execute_string = "select * from Activities"
-    activities = engine.execute(execute_string).fetchall()
-    session.close()
 
+##################################################################################
+# Routes for the activities data table
+##################################################################################
+
+# return all the data for activities
+@app.route("/api/activities/all")
+def activities_all():
+    session = Session(engine)
+    query = "select * from Activities"
+    activities = engine.execute(query).fetchall()
+    session.close() 
+    dict = build_activities_dict(activities)
+    return(jsonify(dict))
+
+
+# return the data for the activity type specified by the end point
+@app.route("/api/activities/activity-type/<activity_type_id>")
+def activities_by_type(activity_type_id):
+    session = Session(engine)
+    query = 'SELECT * FROM Activities WHERE "Activity Type ID" = ?'
+    activities = engine.execute(query, (activity_type_id,)).fetchall()
+    session.close()
+    dict = build_activities_dict(activities)
+    if len(dict["data"])>0:
+        return(jsonify(dict))
+    else:
+        return("Activity type not found")
+    
+# return the data for the number of records specified by the end point
+@app.route("/api/activities/limit/<number_of_records>")
+def activities_by_limit(number_of_records):
+    session = Session(engine)
+    query = 'SELECT * FROM Activities LIMIT ?'
+    activities = engine.execute(query, (number_of_records,)).fetchall()
+    session.close()
+    dict = build_activities_dict(activities)
+    if len(dict["data"])>0:
+        return(jsonify(dict))
+    else:
+        return("Data not found")    
+
+# return the data between the dates specified by the end point
+@app.route("/api/activities/date/<start_date>/<end_date>")
+def activities_by_date(start_date,end_date):
+    if (start_date > end_date):
+        return("start date needs to be before the end date")
+    else:
+        session = Session(engine)
+        query = 'SELECT * FROM Activities WHERE Date between ? and ?'
+        activities = engine.execute(query, (start_date,end_date)).fetchall()
+        session.close()
+        dict = build_activities_dict(activities)
+
+    if len(dict["data"])>0:
+        return(jsonify(dict))
+    else:
+        return("No data available for the dates specified")      
+
+
+
+##################################################################################
+# Routes for the performance metrics data table
+##################################################################################
+        
+# return all the performance data
+@app.route("/api/performance-metrics/all")
+def performance_metrics_all():
+    session = Session(engine)
+    query = "select * from PerformanceMetrics"
+    perf_metrics = engine.execute(query).fetchall()
+    session.close()
+    dict = build_perf_metrics_dict(perf_metrics)
+    return(jsonify(dict))
+
+# return all the performance data for the activity type specified by the end point
+@app.route("/api/performance-metrics/activity-type/<activity_type_id>")
+def performance_metrics_by_activity(activity_type_id):
+    session = Session(engine)
+    query = 'select * from PerformanceMetrics WHERE "Activity Type ID" = ?'
+    perf_metrics = engine.execute(query, (activity_type_id,)).fetchall()
+    session.close()
+    dict = build_perf_metrics_dict(perf_metrics)
+    if len(dict["data"])>0:
+        return(jsonify(dict))
+    else:
+        return("Activity type not found")   
+
+# return the performance data for the number of records specified by the end point
+@app.route("/api/performance-metrics/limit/<number_of_records>")
+def performance_metrics_by_limit(number_of_records):
+    session = Session(engine)
+    query = 'select * from PerformanceMetrics LIMIT ?'
+    perf_metrics = engine.execute(query, (number_of_records,)).fetchall()
+    session.close()
+    dict = build_perf_metrics_dict(perf_metrics)
+    if len(dict["data"])>0:
+        return(jsonify(dict))
+    else:
+        return("Data not found")  
+
+
+##################################################################################
+# Routes for the lap metrics data table
+##################################################################################
+
+# return all lap metric data
+@app.route("/api/lap-metrics/all")
+def lap_metrics():
+    session = Session(engine)
+    execute_string = "select * from LapMetrics"
+    lap_metrics = engine.execute(execute_string).fetchall()
+    session.close()       
+    dict = build_lap_metrics_dict(lap_metrics)
+    return(jsonify(dict))
+
+# return the lap data for the number of records specified by the end point
+@app.route("/api/lap-metrics/limit/<number_of_records>")
+def lap_metrics_by_limit(number_of_records):
+    session = Session(engine)
+    query = 'select * from LapMetrics LIMIT ?'
+    lap_metrics = engine.execute(query, (number_of_records,)).fetchall()
+    session.close()
+    dict = build_lap_metrics_dict(lap_metrics)
+    if len(dict["data"])>0:
+        return(jsonify(dict))
+    else:
+        return("Data not found")  
+
+##################################################################################
+# Routes for the elevation metrics data table
+##################################################################################
+
+# return all elevation metric data
+@app.route("/api/elevation-metrics/all")
+def elevation_metrics():
+    session = Session(engine)
+    query = "select * from ElevationMetrics"
+    elev_metrics = engine.execute(query).fetchall()
+    session.close()
+    dict = build_elev_metrics_dict(elev_metrics)
+    if len(dict["data"])>0:
+        return(jsonify(dict))
+    else:
+        return("Data not found")
+    
+# return the elevation data for the number of records specified by the end point
+@app.route("/api/elev-metrics/limit/<number_of_records>")
+def elev_metrics_by_limit(number_of_records):
+    session = Session(engine)
+    query = 'select * from ElevationMetrics LIMIT ?'
+    elev_metrics = engine.execute(query, (number_of_records,)).fetchall()
+    session.close()
+    dict = build_elev_metrics_dict(elev_metrics)
+    if len(dict["data"])>0:
+        return(jsonify(dict))
+    else:
+        return("Data not found")  
+
+
+
+##################################################################################
+# Functions for building the data dictionaries    
+##################################################################################
+
+# Dictionary for the activities table     
+##################################################################################
+def build_activities_dict(activities):
     activities_dict = {} 
           
     for i in range(0,len(activities)):
@@ -62,16 +230,26 @@ def activities():
                                 "Date": activity[2],
                                 "Title": activity[3]
                                })         
-    return(jsonify(activities_dict))
+    meta_dict = {
+                "title":"Garmin device - activities",
+                "Access time": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+                "Num of records":len(activities_dict),
+                "data":{
+                        "Activity id":{ "ActivityTypeID":"string",
+                                        "Date": "YYYY-MM-DD HH-MM-SS",
+                                        "Title": "Activity name"}
+                    }
+    }
+    data_dict = {
+                "meta":meta_dict,
+                "data":activities_dict
+    }  
 
+    return(data_dict)
 
-@app.route("/api/PerformanceMetrics")
-def performancemetrics():
-    session = Session(engine)
-    execute_string = "select * from PerformanceMetrics"
-    perf_metrics = engine.execute(execute_string).fetchall()
-    session.close()
-
+# Dictionary for the performance metrics table     
+##################################################################################
+def build_perf_metrics_dict(perf_metrics):
     perf_metrics_dict = {} 
           
     for metric in perf_metrics:
@@ -88,16 +266,25 @@ def performancemetrics():
                                 "AvgPace(min/km)": metric[10],
                                 "BestPace(min/km)":metric[11]
                                })
+
+    meta_dict = {
+                "title":"Garmin device - Performance metrics",
+                "Access time": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+                "Num of records":len(perf_metrics_dict),
+                "data":{
+                    "Performance id":{}
+                }
+    }
+    data_dict = {
+                "meta":meta_dict,
+                "data":perf_metrics_dict
+    } 
+    return(data_dict)
+
+# Dictionary for the lap metrics table     
+##################################################################################
+def build_lap_metrics_dict(lap_metrics):
           
-    return(jsonify(perf_metrics_dict))
-
-@app.route("/api/LapMetrics")
-def lapmetrics():
-    session = Session(engine)
-    execute_string = "select * from LapMetrics"
-    lap_metrics = engine.execute(execute_string).fetchall()
-    session.close()
-
     lap_metrics_dict = {} 
           
     for metric in lap_metrics:
@@ -110,29 +297,50 @@ def lapmetrics():
                                 "MovingTime(min)":metric[6],
                                 "ElapsedTime(min)":metric[7]
                                })
-          
-    return(jsonify(lap_metrics_dict))
+    meta_dict = {
+                "title":"Garmin device - Lap metrics",
+                "Access time": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+                "Num of records":len(lap_metrics_dict),
+                "data":{
+                    "Lap id":{}
+                }
+    }   
+    data_dict = {
+                "meta":meta_dict,
+                "data":lap_metrics_dict
+    }
+    return(data_dict)
 
-@app.route("/api/ElevationMetrics")
-def elevationmetrics():
-    session = Session(engine)
-    execute_string = "select * from ElevationMetrics"
-    elevation_metrics = engine.execute(execute_string).fetchall()
-    session.close()
+# Dictionary for the elevation metrics table     
+##################################################################################
+def build_elev_metrics_dict(elev_metrics):
 
     elev_metrics_dict = {} 
           
-    for metric in elevation_metrics:
-          elev_metrics_dict[metric[0]] = ({
+    for metric in elev_metrics:
+        elev_metrics_dict[metric[0]] = ({
                                 "ActivityID": metric[1],
                                 "TotalAscent":metric[2],
                                 "TotalDescent": metric[3],
                                 "MinElevation": metric[4],
                                 "MaxElevation": metric[5],
                                })
-          
-    return(jsonify(elev_metrics_dict))
+    meta_dict = {
+                "title":"Garmin device - Lap metrics",
+                "Access time": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+                "Num of records":len(elev_metrics_dict),
+                "data":{
+                    "Elevation id":{}
+                }
+    }
+    data_dict = {
+                "meta":meta_dict,
+                "data":elev_metrics_dict
+    }
+    
+    return(data_dict)
 
-
+    
+##################################################################################
 if __name__ == '__main__':
     app.run(debug=True)
