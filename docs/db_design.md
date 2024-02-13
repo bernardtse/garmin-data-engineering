@@ -31,7 +31,7 @@ The database design for this project is designed to efficiently store and manage
    - **Description**: Records elevation-related metrics for each activity, such as total ascent, total descent, and minimum/maximum elevation.
    - **Relationships**: Connected to the Activities table through the ActivityID foreign key.
 
-![ERD](ERD.png)
+![ERD](erd.png)
 
 ## Database Integrity Constraints
 
