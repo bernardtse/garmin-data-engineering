@@ -1,7 +1,7 @@
+# Import necessary libraries 
 import pandas as pd
 import sqlite3
 import os
-import pandas as pd
 
 # Load csv file into pandas dataframe
 activity_types_df = pd.read_csv('../data/processed/activity_types.csv')
