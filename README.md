@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-This project aims to develop a comprehensive data engineering solution to analyze exercise and fitness patterns captured through Garmin wearable devices. By leveraging data collected from an individual's Garmin watch, with explicit consent and a focus on privacy, we aim to transform this rich dataset into a structured database. Through additional visualisation efforts by application or web developers, individuals have the opportunity to track and enhance their personal health and fitness strategies.
+This project aims to develop a comprehensive data engineering solution to analyse exercise and fitness patterns captured through Garmin wearable devices. By leveraging data collected from an individual's Garmin watch, with explicit consent and a focus on privacy, we aim to transform this rich dataset into a structured database. Through additional visualisation efforts by application or web developers, individuals have the opportunity to track and enhance their personal health and fitness strategies.
 
 Our motivation is rooted in the belief that well-structured and accessible data can unlock insights into exercise behaviours, aiding individuals and researchers in making informed decisions about physical activity. With a commitment to privacy and ethical data use, this project serves as a foundation for scalable data-driven analysis in the realm of personal fitness.
 
@@ -22,9 +22,9 @@ Our motivation is rooted in the belief that well-structured and accessible data 
 ### <a id="Key-Features"></a>Key Features
 
 - **ETL Workflow**: Implements a robust Extract, Transform, Load (ETL) process to ingest and refine fitness activity data.
-- **Database Design**: Utilizes a relational database structure with multiple tables to organize data efficiently, allowing for scalability and complex queries.
-- **Data Analysis Tools**: Includes methods for reading data from the database, enabling analysis and visualization through Pandas DataFrames and a Flask API for broader access.
-- **Privacy and Ethics**: Adheres to strict privacy guidelines, ensuring no personally identifiable information (PII) is stored or analyzed.
+- **Database Design**: Utilises a relational database structure with multiple tables to organise data efficiently, allowing for scalability and complex queries.
+- **Data Analysis Tools**: Includes methods for reading data from the database, enabling analysis and visualisation through Pandas DataFrames and a Flask API for broader access.
+- **Privacy and Ethics**: Adheres to strict privacy guidelines, ensuring no personally identifiable information (PII) is stored or analysed.
 
 ### <a id="Technical-Stack"></a>Technical Stack
 
@@ -42,7 +42,7 @@ cd garmin-data-engineering
 pip install -r requirements.txt
 ```
 
-Follow the instructions in the [`setup.md`](setup.md) document to initialize the database and start the Flask API server.
+Follow the instructions in the [`setup.md`](setup.md) document to initialise the database and start the Flask API server.
 
 ### <a id="Usage"></a>Usage
 
@@ -53,11 +53,11 @@ Follow the instructions in the [`setup.md`](setup.md) document to initialize the
 
 - **ETL Workflow**: Detailed documentation of the ETL process, including data transformation rules and loading strategies, is available in [`docs/etl_workflow.md`](docs/etl_workflow.md).
 - **Database Schema**: The database design, including table structures and relationships, is described in [`docs/db_design.md`](docs/db_design.md). An Entity-Relationship Diagram (ERD) is also provided for visual reference.
-- **API Guide**: Instructions on utilizing the Flask API, including endpoint descriptions and example requests, can be found in [`docs/api_usage.md`](docs/api_usage.md).
+- **API Guide**: Instructions on utilising the Flask API, including endpoint descriptions and example requests, can be found in [`docs/api_usage.md`](docs/api_usage.md).
 
 ### <a id="Ethical-Considerations"></a>Ethical Considerations
 
-We are committed to maintaining the highest standards of privacy and ethics. The data used in this project has been provided with informed consent, strictly for non-commercial purposes. All analysis is conducted in a manner that ensures individuals' anonymity, with no PII being collected, stored, or analyzed. This project's design facilitates the addition of data from other individuals under similar ethical guidelines, aiming to enrich our understanding of fitness patterns while upholding our commitment to privacy and data protection.
+We are committed to maintaining the highest standards of privacy and ethics. The data used in this project has been provided with informed consent, strictly for non-commercial purposes. All analysis is conducted in a manner that ensures individuals' anonymity, with no PII being collected, stored, or analysed. This project's design facilitates the addition of data from other individuals under similar ethical guidelines, aiming to enrich our understanding of fitness patterns while upholding our commitment to privacy and data protection.
 
 
 ### <a id="References"></a>References
@@ -72,6 +72,6 @@ We would like to thank all contributors and participants who have made this proj
 ### <a id="Collaborators"></a>Collaborators
 
 * [Aysha Gheewala](https://github.com/AyshaGheewala)
-* [Mohammad Nawaz](https://github.com/MoNawaz101)
+* [Mohammed Nawaz](https://github.com/MoNawaz101)
 * [Sum Yeung Bernard Tse](https://github.com/bernardtse)
 * [Nida Ballinger-Chaudhary](https://github.com/NidaB-C)
