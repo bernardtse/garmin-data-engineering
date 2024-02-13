@@ -1,0 +1,36 @@
+.special-text {
+    color: red;
+    font-style: italic;
+}
+
+.blue-text {
+    color: blue;
+}
+
+.popup-table, .popup-table th, .popup-table td {
+    border-style: solid;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 5px;
+}
+.popup-table th {
+    background-color: lightgray;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 30%;
+    left: 30%;
+    border: 10px;
+    border-color: black;
+    background-color: white;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.row row-cols-4
+
+.indent {
+    margin-left: 100px; /* Adjust the value as needed */
+}
