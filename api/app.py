@@ -16,20 +16,7 @@ app.config['JSON_SORT_KEYS'] = False
 @app.route("/")
 def home():
 
-    message=["/api/activity-types",
-             "/api/activities/all",
-             "/api/activities/activity-type/{ActivityTypeID}",
-             "/api/activities/limit/{number_of_records}",
-             "/api/activities/date/{start_date}}/{end_date}",
-             "/api/performance-metrics/all",
-             "/api/performance-metrics/activity-type/{activity_type_id}",
-             "/api/performance-metrics/limit/{number of records}",            
-             "/api/lap-metrics/all",
-             "/api/lap-metrics/limit/{number_of_records}",            
-             "/api/elevation-metrics/all",
-             "/api/elev-metrics/limit/{number_of_records}"]
-
-    return render_template ("index.html",message=message)
+    return render_template ("index.html")
 
 
 
@@ -326,7 +313,7 @@ def build_elev_metrics_dict(elev_metrics):
                                 "MaxElevation": metric[5],
                                })
     meta_dict = {
-                "title":"Garmin device - Lap metrics",
+                "title":"Garmin device - Elevation metrics",
                 "Access time": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
                 "Num of records":len(elev_metrics_dict),
                 "data":{
