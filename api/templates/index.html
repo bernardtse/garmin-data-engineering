@@ -17,7 +17,7 @@
 <body>
 
 <!-- Header & Navbar -->
-<nav class="navbar-right navbar-expand-lg navbar-dark bg-warning">
+<nav class="navbar-right navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <div class="container-fluid pb-2">
             <a class="navbar-brand d-flex justify-content-center p-2" href="/">
@@ -39,32 +39,60 @@
             </div>
         </div>    
         <!--Titles-->
-        <div class="row row-cols-4" style="background-color: #023047;">
+        <div class="row row-cols-5" style="background-color: #023047;">
             <div class="col-md-2 mt-0"></div>
-            <div class="col-md-4 d-flex align-items-center mt-2"><h3 style="color: white;">Information</h3></div>
+            <div class="col-md-2.5 d-flex align-items-center mt-2"><h3 style="color: white;">Information</h3></div>
             <div class="col-md-2 d-flex align-items-center mt-2"><h3 style="color: white;">Basic Endpoints</h3></div>
-            <div class="col-md-4 d-flex align-items-center mt-2"><h3 style="color: white;">Additional Endpoints</h3></div>
+            <div class="col-md-3 d-flex align-items-center mt-2"><h3 style="color: white;">Additional Endpoints</h3></div>
+            <div class="col-md-2.5 d-flex align-items-center mt-2"><h3 style="color: white;">Interactive Endpoints</h3></div>
         </div>
         <!--Types of activities-->
-        <div class="row row-cols-4" style="background-color: #8ECAE6;">
+        <div class="row row-cols-5" style="background-color: #8ECAE6;">
             <div class="col-md-2 mt-0"><img width="250px" src="../static/images/gym.png"></div>
-            <div class="col-md-4 mt-1"><p><u><h5>Types of Activities</h5></u>This endpoint provides data on the types of activities undertaken.<br>Each activity has a uniques identifier.<br>The endpoint provides all the identifiers.</p></div>
-            <div class="col-md-2 mt-4"><p style="font-size: 18px;"><a href = "/api/activity-types">/api/activity-types</a></p></div>
-            <div class="col-md-4 mt-0"></div>
+            <div class="col-md-2.5 mt-3"><u><h5>Types of Activities</h5></u><p style="font-size: 16px">This endpoint provides data on the types of activities undertaken.<br><br>Each activity has a uniques identifier.<br>The endpoint provides all the identifiers.</p></div>
+            <div class="col-md-2 mt-4"><p style="font-size: 16px;"><a href = "/api/activity-types">/api/activity-types</a></p></div>
+            <div class="col-md-3 mt-1"></div>
+            <div class="col-md-2.5 mt-4"><p><button onclick="showPopUp()">Check ActivityTypeID</button></p></div>
         </div>
         <!--Activities-->
-        <div class="row row-cols-4">
+        <div class="row row-cols-5">
             <div class="col-md-2 mt-0"><img width="250px" src="../static/images/activities.png"></div>
-            <div class="col-md-4 mt-1"><p><u><h5>Activities</h5></u>These end points provide data on the activities undertaken with information about the type of activity, duration etc.<br>The basic endpoint provides all the data available whilst the additional endpoints can be used to filter the data by activity type, last n records and dates.</p><p><button onclick="showPopUp()">Check ActivityTypeID</button></p></div>
-            <div class="col-md-2 mt-4"><p style="font-size: 18px;"><a href = "/api/activities/all">/api/activities/all</a></p></div>
-            <div class="col-md-4 mt-4"><p style="font-size: 18px;"><span class="blue-text">/api/activities/activity-type/<span class="special-text">{ActivityTypeID}</span >
-                </span><br>&emsp;&emsp;Enter ActivityTypeID: <input type="text" id="i1" placeholder="AT001" size="17"><button onclick="visitAPI('link1')" value>Go</button><br>
-                <span class="blue-text">/api/activities/limit/<span class="special-text">{number_of_records}</span></span><br>&emsp;&emsp;&emsp;&emsp;Enter a Number: <input type="text" id="i2" placeholder="1" size="17"><button onclick="visitAPI('link2')">Go</button><br>
-                <!--<span class="blue-text">/api/activities/limit/<span class="special-text">{number_of_records}</span></span><br>
-                <span class="indent">Enter a Number: <input type="text" id="i2" placeholder="1" size="4"><button onclick="visitAPI('link2')">Go</button></span><br>
-                -->
-                <span class="blue-text">/api/activities/date/<span class="special-text">{start_date}</span>/<span class="special-text">{end_date}</span></span><br>&emsp;&emsp;Enter start_date (YYYY-MM-DD): <input type="text" id="i3a" placeholder="YYYY-MM-DD" size="8" style="margin-bottom: 6px;"><br>&emsp;&emsp;Enter end_date (YYYY-MM-DD) : <input type="text" id="i3b" placeholder="YYYY-MM-DD" size="8"><button onclick="visitAPI('link3')">Go</button><br></p></div>
-            </div>
+            <div class="col-md-2.5 mt-3"><u><h5>Activities</h5></u><p style="font-size: 16px">These end points provide data on the activities undertaken with information about the type of activity, duration etc.<br><br>The basic endpoint provides all the data available whilst the additional endpoints can be used to filter the data by activity type, last N records and dates.</p></div>
+            <div class="col-md-2 mt-4"><p style="font-size: 16px;"><a href = "/api/activities/all">/api/activities/all</a></p></div>
+            <div class="col-md-3 mt-4"><p style="font-size: 16px;"><span class="blue-text">/api/activities/activity-type/<span class="special-text">{ActivityTypeID} <br></span ><br>
+                <span class="blue-text">/api/activities/limit/<span class="special-text">{number_of_records}"<br></span></span><br>
+                <span class="blue-text">/api/activities/date/<span class="special-text">{start_date}</span>/<span class="special-text">{end_date}</span></div>
+            <div class="col-md-2.5 mt-4"><p style="font-size: 16px;">
+                </span>Enter ActivityTypeID: <input type="text" id="i1" placeholder="AT001" size="10" style="margin-bottom: 16px;">&nbsp;&nbsp;<button onclick="visitAPI('link1')" value>Go</button><br>
+                </span></span>Enter a Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="i2" placeholder="1" size="10" style="margin-bottom: 16px;">&nbsp;&nbsp;<button onclick="visitAPI('link2')">Go</button><br>
+                </span></span>Enter start_date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="i3a" placeholder="YYYY-MM-DD" size="10" style="margin-bottom: 6px;"><br>Enter end_date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="i3b" placeholder="YYYY-MM-DD" size="10">&nbsp;&nbsp;&nbsp;<button onclick="visitAPI('link3')">Go</button><br></p></div>
+        </div>  
+        <!--Performance Metrics-->
+        <div class="row row-cols-5" style="background-color: #8ECAE6;">
+            <div class="col-md-2 mt-0"><img width="250px" src="../static/images/performance.png"></div>
+            <div class="col-md-2.5 mt-1"><p><u><h5>Performance Metrics</h5></u>These end points provide performance data on the activities undertaken such as length of time, calories etc.<br><br>The basic endpoint provides all the data available whilst the additional endpoints can be used to filter the data by activity type and last N records.</p></div>
+            <div class="col-md-2 mt-4"><p style="font-size: 16px;"><a href="/api/performance-metrics/all">/api/performance-metrics/all</a></p></div>
+            <div class="col-md-3 mt-4"><p style="font-size: 16px;"><span class="blue-text">/api/performance-metrics/activity-type/<span class="special-text">{ActivityTypeID}<br></span></span><br>
+                <span class="blue-text">/api/performance-metrics/limit/<span class="special-text">{number_of_records}</span></span></p><br></div><br>
+            <div class="col-md-2.5 mt-4"><p style="font-size: 16px;"></span></span>Enter ActivityTypeID: <input type="text" id="i4" placeholder="AT001" size="10" style="margin-bottom: 16px;">&nbsp;&nbsp;<button onclick="visitAPI('link4')">Go</button><br>
+                    </span></span>Enter a Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="i5" placeholder="1" size="10">&nbsp;&nbsp;<button  value onclick="visitAPI('link5')">Go</button></p></div>
+        </div>
+        <!--Lap Metrics-->
+        <div class="row row-cols-5">
+            <div class="col-md-2 mt-0"><img width="250px" src="../static/images/lap.png"></div>
+            <div class="col-md-2.5 mt-1"><p><u><h5>Lap Metrics</h5></u>These end points provide lap data for the running activities. <br><br>The basic endpoint provides all the data available whilst the additional endpoint can be used to filter the data by for the last N records.</p></div>
+            <div class="col-md-2 mt-4"><p style="font-size: 16px;"><a href="/api/lap-metrics/all">/api/lap-metrics/all</a></p></div>
+            <div class="col-md-3 mt-4"><p style="font-size: 16px;"><span class="blue-text">/api/lap-metrics/limit/<span class="special-text">{number_of_records}</span><br></p></div>
+            <div class="col-md-2.5 mt-4"><p style="font-size: 16px;"></span>Enter a Number: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="i6" placeholder="1" size="10">&nbsp;&nbsp;<button onclick="visitAPI('link6')">Go</button><br></p></div>            
+        </div>
+        <!--Elevation Metrics-->
+        <div class="row row-cols-5" style="background-color: #8ECAE6;">
+            <div class="col-md-2 mt-0"><img width="250px" src="../static/images/hilly.png"></div>
+            <div class="col-md-2.5 mt-1"><p><u><h5>Elevation Metrics</h5></u>These end points provide elevation data for the running activities. <br><br>The basic endpoint provides all the data available whilst the additional endpoint can be used to filter the data by for the last N records.</p></div>
+            <div class="col-md-2 mt-4"><p style="font-size: 16px;"><a href="/api/elevation-metrics/all">/api/elevation-metrics/all</a></p></div>
+            <div class="col-md-3 mt-4"><p style="font-size: 16px;"><span class="blue-text">/api/elev-metrics/limit/<span class="special-text">{number_of_records}</span><br></p></div>
+            <div class="col-md-3.5 mt-4"><p style="font-size: 16px;"></span>Enter a Number: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="i7" placeholder="1" size="10">&nbsp;&nbsp;<button onclick="visitAPI('link7')">Go</button><br></p></div>
+        </div>
         <div id="popup" onclick="closePopUp()">
             <table class = "popup-table">
                 <tr><th>ActivityTypeID</th><th>Activity Type</th></tr>
@@ -78,30 +106,7 @@
                 <tr><td>AT008</td><td>Walking</td></tr>
                 <tr><td>AT009</td><td>Indoor Cycling</td></tr>
                 <tr><td>AT010</td><td>Cycling</td></tr>
-                </table></div>
-
-        <!--Performance Metrics-->
-        <div class="row row-cols-4" style="background-color: #8ECAE6;">
-            <div class="col-md-2 mt-0"><img width="250px" src="../static/images/performance.png"></div>
-            <div class="col-md-4 mt-1"><p><u><h5>Performance Metrics</h5></u>These end points provide performance data on the activities undertaken such as length of time, calories etc.<br>The basic endpoint provides all the data available whilst the additional endpoints can be used to filter the data by activity type and last n records.</p><p><button onclick="showPopUp()">Check ActivityTypeID</button></p></div>
-            <div class="col-md-2 mt-4"><p style="font-size: 18px;"><a href="/api/performance-metrics/all">/api/performance-metrics/all</a></p></div>
-            <div class="col-md-4 mt-4"><p style="font-size: 18px;"><span class="blue-text">/api/performance-metrics/activity-type/<span class="special-text">{ActivityTypeID}</span></span><br>&emsp;&emsp;Enter ActivityTypeID: <input type="text" id="i4" placeholder="AT001" size="17"><button onclick="visitAPI('link4')">Go</button><br>
-                <span class="blue-text">/api/performance-metrics/limit/<span class="special-text">{number_of_records}</span></span><br>&emsp;&emsp;&emsp;&emsp;Enter a Number: <input type="text" id="i5" placeholder="1" size="17"><button  value onclick="visitAPI('link5')">Go</button></p></div>
-        </div>
-        <!--Lap Metrics-->
-        <div class="row row-cols-4">
-            <div class="col-md-2 mt-0"><img width="250px" src="../static/images/lap.png"></div>
-            <div class="col-md-4 mt-1"><p><u><h5>Lap Metrics</h5></u>These end points provide lap data for the running activities. <br>The basic endpoint provides all the data available whilst the additional endpoint can be used to filter the data by for the last n records.</p></div>
-            <div class="col-md-2 mt-4"><p style="font-size: 18px;"><a href="/api/lap-metrics/all">/api/lap-metrics/all</a></p></div>
-            <div class="col-md-4 mt-4"><p style="font-size: 18px;"><span class="blue-text">/api/lap-metrics/limit/<span class="special-text">{number_of_records}</span></span><br>&emsp;&emsp;&emsp;&emsp;Enter a Number: <input type="text" id="i6" placeholder="1" size="16"><button onclick="visitAPI('link6')">Go</button><br></p></div>
-        </div>
-        <!--Evelvation Metrics-->
-        <div class="row row-cols-4" style="background-color: #8ECAE6;">
-            <div class="col-md-2 mt-0"><img width="250px" src="../static/images/hilly.png"></div>
-            <div class="col-md-4 mt-1"><p><u><h5>Elevation Metrics</h5></u>These end points provide elevation data for the running activities. <br>The basic endpoint provides all the data available whilst the additional endpoint can be used to filter the data by for the last n records.</p></div>
-            <div class="col-md-2 mt-4"><p style="font-size: 18px;"><a href="/api/elevation-metrics/all">/api/elevation-metrics/all</a></p></div>
-            <div class="col-md-4 mt-4"><p style="font-size: 18px;"><span class="blue-text">/api/elev-metrics/limit/<span class="special-text">{number_of_records}</span></span><br>&emsp;&emsp;&emsp;&emsp;Enter a Number: <input type="text" id="i7" placeholder="1" size="16"><button onclick="visitAPI('link7')">Go</button><br></p></div>
-        </div>
+                </table></div>    
     </div>
     <div class="flex-item"></div>
   </div>

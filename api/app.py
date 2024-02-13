@@ -11,14 +11,19 @@ from flask import Flask, jsonify, render_template
 engine = create_engine("sqlite:///../database/database.sqlite")
 
 app = Flask(__name__)
+
+# Set flag to stop the JSON fields being put in alphabetical order
 app.config['JSON_SORT_KEYS'] = False
+
+
+##################################################################################
+# Route to starting page
+##################################################################################
 
 @app.route("/")
 def home():
 
     return render_template ("index.html")
-
-
 
 
 
@@ -330,4 +335,4 @@ def build_elev_metrics_dict(elev_metrics):
     
 ##################################################################################
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
