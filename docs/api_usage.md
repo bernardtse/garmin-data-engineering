@@ -2,6 +2,8 @@
 
 Welcome to our API documentation. This API provides access to a wealth of information regarding activity tracking, including types of activities, individual activities, performance metrics, lap data, and elevation data during activities. Our API endpoints are designed to deliver comprehensive data in an easily consumable JSON format.
 
+More information on what each field entails can be found [here.](https://www8.garmin.com/manuals-apac/webhelp/fenix7series/EN-SG/GUID-2F4FAE2E-DC3F-4D74-95AF-E669B443A97E-3741.html)
+
 ## Available Endpoints
 
 ### Activity Types
