@@ -1,6 +1,6 @@
 ## Setup Instructions for Garmin Data Engineering Project
 
-This document provides detailed instructions on setting up the project environment, initializing the database, and starting the Flask API server.
+This document provides detailed instructions on setting up the project environment, initialising the database, and starting the Flask API server.
 
 ### Prerequisites
 
@@ -40,7 +40,7 @@ Install the project dependencies using `pip`:
 pip install -r requirements.txt
 ```
 
-### Step 5: Initialize the Database 
+### Step 5: Initialise the Database 
 
 Run the ETL scripts to extract data from the CSV files, transform the data, and load it into the SQLite database. Execute the following commands:
 
@@ -71,4 +71,4 @@ curl http://127.0.0.1:5000/
 Refer to the [`API documentation`](docs/api_usage.md) for more information on available endpoints and their usage.
 
 ### Conclusion
-You have successfully set up the Garmin Data Engineering project environment, initialized the database, and started the Flask API server. Explore the API endpoints to interact with the activity metrics data.
+You have successfully set up the Garmin Data Engineering project environment, initialised the database, and started the Flask API server. Explore the API endpoints to interact with the activity metrics data.
