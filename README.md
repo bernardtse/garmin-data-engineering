@@ -38,13 +38,20 @@ Our motivation is rooted in the belief that well-structured and accessible data 
 
 To get started with this project, clone the repository and install the required Python packages listed in [`requirements.txt`](requirements.txt). Ensure you have Python 3.2 installed on your system.
 
+Original Project
 ```bash
-git clone https://github.com/NidaB-C/garmin-data-engineering
+git clone https://github.com/NidaB-C/garmin-data-engineering.git
+cd garmin-data-engineering
+pip install -r requirements.txt
+```
+Forked Project
+```bash
+git clone https://github.com/bernardtse/garmin-data-engineering.git
 cd garmin-data-engineering
 pip install -r requirements.txt
 ```
 
-Follow the instructions in the [`setup.md`](setup.md) document to initialise the database and start the Flask API server.
+Follow the instructions in the [`SETUP.md`](SETUP.md) document to initialise the database and start the Flask API server.
 
 ## 5. Usage
 
@@ -53,9 +60,9 @@ Follow the instructions in the [`setup.md`](setup.md) document to initialise the
 
 ## 6. Documentation
 
-- **ETL Workflow**: Detailed documentation of the ETL process, including data transformation rules and loading strategies, is available in [`docs/etl_workflow.md`](docs/etl_workflow.md).
-- **Database Schema**: The database design, including table structures and relationships, is described in [`docs/db_design.md`](docs/db_design.md). An Entity-Relationship Diagram (ERD) is also provided for visual reference.
-- **API Guide**: Instructions on utilising the Flask API, including endpoint descriptions and example requests, can be found in [`docs/api_usage.md`](docs/api_usage.md).
+- **ETL Workflow**: Detailed documentation of the ETL process, including data transformation rules and loading strategies, is available in [`docs/ETL_WORKFLOW.md`](docs/ETL_WORKFLOW.md).
+- **Database Schema**: The database design, including table structures and relationships, is described in [`docs/DB_DESIGN.md`](docs/DB_DESIGN.md). An Entity-Relationship Diagram (ERD) is also provided for visual reference.
+- **API Guide**: Instructions on utilising the Flask API, including endpoint descriptions and example requests, can be found in [`docs/API_USAGE.md`](docs/API_USAGE.md).
 
 ## 7. Ethical Considerations
 

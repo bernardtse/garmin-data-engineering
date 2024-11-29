@@ -6,7 +6,7 @@ import numpy as np
 import nbconvert
 
 # Load the dataset from the CSV file
-df = pd.read_csv('../data/raw/Activities.csv')
+df = pd.read_csv('../data/raw/activities_raw.csv')
 
 # Convert Date & Time to correct format
 df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d %H:%M:%S')

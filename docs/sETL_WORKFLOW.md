@@ -2,7 +2,7 @@
 The ETL (Extract, Transform, Load) process in this project involves extracting data from a single large CSV file called Activities.csv, which contains comprehensive activity tracking data. The data is then transformed into multiple CSV files representing different entities, such as activity types, performance metrics, lap metrics, and elevation metrics. These CSV files are subsequently loaded into a SQLite database for efficient data management and analysis.
 
 ### 1. Extraction:
-All data is initially extracted from the main file, [Activities.csv](../data/raw/Activities.csv). This file contains a wide range of information related to activity tracking sessions, including activity type, date, title, performance metrics, lap metrics, and elevation metrics.
+All data is initially extracted from the main file, [`activities_raw.csv`](../data/raw/activities_raw.csv). This file contains a wide range of information related to activity tracking sessions, including activity type, date, title, performance metrics, lap metrics, and elevation metrics.
 
 ### 2. Transformation:
 The extracted data undergoes transformation to ensure it meets the desired format and schema. Various transformations are applied, including:
@@ -17,11 +17,11 @@ The extracted data undergoes transformation to ensure it meets the desired forma
 ### 3. Loading:
 Transformed data is exported to separate CSV files corresponding to different entities:
 
-- **[activities.csv](../data/processed/activities.csv)**: Contains basic details about each activity, such as activity ID, activity type ID, date, and title.
-- **[activity_types.csv](../data/processed/activity_types.csv)**: Provides a reference table for activity types, with unique activity type IDs and corresponding names.
-- **[performance_metrics.csv](../data/processed/performance_metrics.csv)**: Stores specific performance metrics for deeper analysis, including distance, calories burned, time, heart rate, and pace.
-- **[lap_metrics.csv](../data/processed/lap_metrics.csv)**: Captures lap-specific metrics such as lap time, number of laps, total distance, and moving/elapsed time.
-- **[elevation_metrics.csv](../data/processed/elevation_metrics.csv)**: Records elevation-related metrics, including total ascent, total descent, and minimum/maximum elevation.
+- **[`activities.csv`](../data/processed/activities.csv)**: Contains basic details about each activity, such as activity ID, activity type ID, date, and title.
+- **[`activity_types.csv`](../data/processed/activity_types.csv)**: Provides a reference table for activity types, with unique activity type IDs and corresponding names.
+- **[`performance_metrics.csv`](../data/processed/performance_metrics.csv)**: Stores specific performance metrics for deeper analysis, including distance, calories burned, time, heart rate, and pace.
+- **[`lap_metrics.csv`](../data/processed/lap_metrics.csv)**: Captures lap-specific metrics such as lap time, number of laps, total distance, and moving/elapsed time.
+- **[`elevation_metrics.csv`](../data/processed/elevation_metrics.csv)**: Records elevation-related metrics, including total ascent, total descent, and minimum/maximum elevation.
 
 ### 4. SQLite Database Creation:
 A SQLite database schema is designed based on the exported CSV files. Each CSV file represents a table in the database, with appropriate primary and foreign keys defined to establish relationships between tables.

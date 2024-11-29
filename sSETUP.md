@@ -12,8 +12,14 @@ Before starting, ensure you have the following installed on your system:
 
 Clone the repository to your local machine by running the following command in your terminal:
 
+Original Project
 ```bash
 git clone https://github.com/NidaB-C/garmin-data-engineering.git
+cd garmin-data-engineering
+```
+Forked Project
+```bash
+git clone https://github.com/bernardtse/garmin-data-engineering.git
 cd garmin-data-engineering
 ```
 
@@ -65,7 +71,6 @@ The Flask API server will start, and you should see output indicating that the s
 With the server running, you can access the API endpoints using a web browser or tools like curl or Postman. For example, to access the root endpoint:
 
 ```bash
-Copy code
 curl http://127.0.0.1:5000/
 ```
 Refer to the [`API documentation`](docs/api_usage.md) for more information on available endpoints and their usage.
