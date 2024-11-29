@@ -36,7 +36,7 @@ Our motivation is rooted in the belief that well-structured and accessible data 
 
 ## 4. Getting Started
 
-To get started with this project, clone the repository and install the required Python packages listed in [`requirements.txt`](requirements.txt). Ensure you have Python 3.2 installed on your system.
+To get started with this project, clone the repository and install the required Python packages listed in [`requirements.txt`](requirements.txt). Ensure you have Python 3 installed on your system.
 
 Original Project
 ```bash

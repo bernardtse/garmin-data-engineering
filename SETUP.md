@@ -5,7 +5,7 @@ This document provides detailed instructions on setting up the project environme
 ### Prerequisites
 
 Before starting, ensure you have the following installed on your system:
-- Python 3.2
+- Python 3
 - pip (Python package manager)
 
 ### Step 1: Clone the Repository
@@ -28,8 +28,9 @@ cd garmin-data-engineering
 Create a new Conda environment for the project dependencies. Run the following command:
 
 ```bash
-conda create --name dev python=3.2
+conda create --name dev
 ```
+
 ### Step 3: Activate the Conda Environment:
 
 Activate the newly created Conda environment by running:
@@ -73,7 +74,7 @@ With the server running, you can access the API endpoints using a web browser or
 ```bash
 curl http://127.0.0.1:5000/
 ```
-Refer to the [`API documentation`](docs/api_usage.md) for more information on available endpoints and their usage.
+Refer to the [`API documentation`](docs/API_USAGE.md) for more information on available endpoints and their usage.
 
 ### Conclusion
 You have successfully set up the Garmin Data Engineering project environment, initialised the database, and started the Flask API server. Explore the API endpoints to interact with the activity metrics data.
