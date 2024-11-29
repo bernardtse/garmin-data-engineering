@@ -27,7 +27,7 @@
 </nav>
 
 <div class="flex-container">
-<!--    <div class="flex-item"><div class="col-md-6 mt-4"></div><img width="300px" src="../static/images/gym.jpg"><div class = "col-md-6 mt-4"><p>{{ message }}</p></div> -->
+
     <div class="flex-item">
         <!--Bumf at the beginning-->
         <div class="row row-cols-1">
@@ -93,24 +93,26 @@
             <div class="col-md-3 mt-4"><p style="font-size: 16px;"><span class="blue-text">/api/elev-metrics/limit/<span class="special-text">{number_of_records}</span><br></p></div>
             <div class="col-md-3.5 mt-4"><p style="font-size: 16px;"></span>Enter a number: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" id="i7" placeholder="1" size="10">&nbsp;&nbsp;<button onclick="visitAPI('link7')">Go</button><br></p></div>
         </div>
-        <div id="popup" onclick="closePopUp()">
-            <table class = "popup-table">
-                <tr><th>ActivityTypeID</th><th>Activity Type</th></tr>
-                <tr><td>AT001</td><td>Treadmill Running</td></tr>
-                <tr><td>AT002</td><td>Running</td></tr>
-                <tr><td>AT003</td><td>Indoor Rowing</td></tr>
-                <tr><td>AT004</td><td>Pool Swimming</td></tr>
-                <tr><td>AT005</td><td>Cardio</td></tr>
-                <tr><td>AT006</td><td>Elliptical</td></tr>
-                <tr><td>AT007</td><td>Other</td></tr>
-                <tr><td>AT008</td><td>Walking</td></tr>
-                <tr><td>AT009</td><td>Indoor Cycling</td></tr>
-                <tr><td>AT010</td><td>Cycling</td></tr>
-                </table></div>    
+            
     </div>
-    <div class="flex-item"></div>
   </div>
 
+<!-- Popup -->
+<div id="popup" onclick="closePopUp()">
+    <table class = "popup-table">
+        <tr><th>ActivityTypeID</th><th>Activity Type</th></tr>
+        <tr><td>AT001</td><td>Treadmill Running</td></tr>
+        <tr><td>AT002</td><td>Running</td></tr>
+        <tr><td>AT003</td><td>Indoor Rowing</td></tr>
+        <tr><td>AT004</td><td>Pool Swimming</td></tr>
+        <tr><td>AT005</td><td>Cardio</td></tr>
+        <tr><td>AT006</td><td>Elliptical</td></tr>
+        <tr><td>AT007</td><td>Other</td></tr>
+        <tr><td>AT008</td><td>Walking</td></tr>
+        <tr><td>AT009</td><td>Indoor Cycling</td></tr>
+        <tr><td>AT010</td><td>Cycling</td></tr>
+    </table>
+</div>
 
 </body>
 

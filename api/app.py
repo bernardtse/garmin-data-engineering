@@ -1,10 +1,9 @@
 # Import the dependencies.
 import numpy as np
-import datetime as dt
 from datetime import datetime
 
 from sqlalchemy.orm import Session
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from flask import Flask, jsonify, render_template
 
 
@@ -34,8 +33,9 @@ def home():
 @app.route("/api/activity-types")
 def activitytypes():
     session = Session(engine)
-    execute_string = "select * from ActivityTypes"
-    activity_types = engine.execute(execute_string).fetchall()
+    conn = engine.connect()
+    query = text('select * from ActivityTypes')
+    activity_types = conn.execute(query).fetchall()
     session.close()
 
     activity_type_dict = []
@@ -54,8 +54,9 @@ def activitytypes():
 @app.route("/api/activities/all")
 def activities_all():
     session = Session(engine)
-    query = "select * from Activities"
-    activities = engine.execute(query).fetchall()
+    conn = engine.connect()
+    query = text('select * from Activities')
+    activities = conn.execute(query).fetchall()
     session.close() 
     dict = build_activities_dict(activities)
     return(jsonify(dict))
@@ -65,8 +66,9 @@ def activities_all():
 @app.route("/api/activities/activity-type/<activity_type_id>")
 def activities_by_type(activity_type_id):
     session = Session(engine)
-    query = 'SELECT * FROM Activities WHERE "Activity Type ID" = ?'
-    activities = engine.execute(query, (activity_type_id,)).fetchall()
+    conn = engine.connect()
+    query = text('SELECT * FROM Activities WHERE "Activity Type ID" = :activity_type_id')
+    activities = conn.execute(query, {"activity_type_id": activity_type_id}).fetchall()
     session.close()
     dict = build_activities_dict(activities)
     if len(dict["data"])>0:
@@ -78,8 +80,9 @@ def activities_by_type(activity_type_id):
 @app.route("/api/activities/limit/<number_of_records>")
 def activities_by_limit(number_of_records):
     session = Session(engine)
-    query = 'SELECT * FROM Activities LIMIT ?'
-    activities = engine.execute(query, (number_of_records,)).fetchall()
+    conn = engine.connect()
+    query = text('SELECT * FROM Activities LIMIT :limit')
+    activities = conn.execute(query, {"limit": int(number_of_records)}).fetchall()
     session.close()
     dict = build_activities_dict(activities)
     if len(dict["data"])>0:
@@ -94,8 +97,9 @@ def activities_by_date(start_date,end_date):
         return("start date needs to be before the end date")
     else:
         session = Session(engine)
-        query = 'SELECT * FROM Activities WHERE Date between ? and ?'
-        activities = engine.execute(query, (start_date,end_date)).fetchall()
+        conn = engine.connect()
+        query = text('SELECT * FROM Activities WHERE Date between :start_date and :end_date')
+        activities = conn.execute(query, {"start_date": start_date, "end_date": end_date}).fetchall()
         session.close()
         dict = build_activities_dict(activities)
 
@@ -114,8 +118,9 @@ def activities_by_date(start_date,end_date):
 @app.route("/api/performance-metrics/all")
 def performance_metrics_all():
     session = Session(engine)
-    query = "select * from PerformanceMetrics"
-    perf_metrics = engine.execute(query).fetchall()
+    conn = engine.connect()
+    query = text('select * from PerformanceMetrics')
+    perf_metrics = conn.execute(query).fetchall()
     session.close()
     dict = build_perf_metrics_dict(perf_metrics)
     return(jsonify(dict))
@@ -124,8 +129,9 @@ def performance_metrics_all():
 @app.route("/api/performance-metrics/activity-type/<activity_type_id>")
 def performance_metrics_by_activity(activity_type_id):
     session = Session(engine)
-    query = 'select * from PerformanceMetrics WHERE "Activity Type ID" = ?'
-    perf_metrics = engine.execute(query, (activity_type_id,)).fetchall()
+    conn = engine.connect()
+    query = text('select * from PerformanceMetrics WHERE "Activity Type ID" = :activity_type_id')
+    perf_metrics = conn.execute(query, {"activity_type_id": activity_type_id}).fetchall()
     session.close()
     dict = build_perf_metrics_dict(perf_metrics)
     if len(dict["data"])>0:
@@ -137,8 +143,9 @@ def performance_metrics_by_activity(activity_type_id):
 @app.route("/api/performance-metrics/limit/<number_of_records>")
 def performance_metrics_by_limit(number_of_records):
     session = Session(engine)
-    query = 'select * from PerformanceMetrics LIMIT ?'
-    perf_metrics = engine.execute(query, (number_of_records,)).fetchall()
+    conn = engine.connect()
+    query = text('select * from PerformanceMetrics LIMIT :limit')
+    perf_metrics = conn.execute(query, {"limit": int(number_of_records)}).fetchall()
     session.close()
     dict = build_perf_metrics_dict(perf_metrics)
     if len(dict["data"])>0:
@@ -155,8 +162,9 @@ def performance_metrics_by_limit(number_of_records):
 @app.route("/api/lap-metrics/all")
 def lap_metrics():
     session = Session(engine)
-    execute_string = "select * from LapMetrics"
-    lap_metrics = engine.execute(execute_string).fetchall()
+    conn = engine.connect()
+    query = text('select * from LapMetrics')
+    lap_metrics = conn.execute(query).fetchall()
     session.close()       
     dict = build_lap_metrics_dict(lap_metrics)
     return(jsonify(dict))
@@ -165,8 +173,9 @@ def lap_metrics():
 @app.route("/api/lap-metrics/limit/<number_of_records>")
 def lap_metrics_by_limit(number_of_records):
     session = Session(engine)
-    query = 'select * from LapMetrics LIMIT ?'
-    lap_metrics = engine.execute(query, (number_of_records,)).fetchall()
+    conn = engine.connect()
+    query = text('select * from LapMetrics LIMIT :limit')
+    lap_metrics = conn.execute(query, {"limit": int(number_of_records)}).fetchall()
     session.close()
     dict = build_lap_metrics_dict(lap_metrics)
     if len(dict["data"])>0:
@@ -182,8 +191,9 @@ def lap_metrics_by_limit(number_of_records):
 @app.route("/api/elevation-metrics/all")
 def elevation_metrics():
     session = Session(engine)
-    query = "select * from ElevationMetrics"
-    elev_metrics = engine.execute(query).fetchall()
+    conn = engine.connect()
+    query = text('select * from ElevationMetrics')
+    elev_metrics = conn.execute(query).fetchall()
     session.close()
     dict = build_elev_metrics_dict(elev_metrics)
     if len(dict["data"])>0:
@@ -195,8 +205,9 @@ def elevation_metrics():
 @app.route("/api/elev-metrics/limit/<number_of_records>")
 def elev_metrics_by_limit(number_of_records):
     session = Session(engine)
-    query = 'select * from ElevationMetrics LIMIT ?'
-    elev_metrics = engine.execute(query, (number_of_records,)).fetchall()
+    conn = engine.connect()
+    query = text('select * from ElevationMetrics LIMIT :limit')
+    elev_metrics = conn.execute(query, {"limit": int(number_of_records)}).fetchall()
     session.close()
     dict = build_elev_metrics_dict(elev_metrics)
     if len(dict["data"])>0:
