@@ -1,6 +1,6 @@
 # Garmin Data Engineering
 
-<img width="1353" alt="Screenshot 2024-02-12 at 8 08 17 PM" src="https://github.com/NidaB-C/garmin-data-engineering/assets/147389952/5b8d2d52-f904-42f5-8b78-93c0f277d8fb">
+![Garmin Data Engineering](images/banner.png)
 
 
 ## Contents
@@ -57,6 +57,8 @@ Follow the instructions in the [`SETUP.md`](SETUP.md) document to initialise the
 
 - **ETL Process**: Run the ETL scripts to extract data from the CSV, transform it according to the project schema, and load it into the SQLite database.
 - **API Access**: Use the Flask API endpoints to query the database and retrieve JSON-formatted data for analysis or application integration.
+
+![API](images/api.png)
 
 ## 6. Documentation
 
