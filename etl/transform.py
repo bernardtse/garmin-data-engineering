@@ -216,4 +216,5 @@ elevation_metrics_df.to_csv('../data/processed/elevation_metrics.csv',encoding='
 # ### Convert to .py 
 
 #Use nbconvert to export noteboook to transform.py in the etl directory 
-#get_ipython().system('jupyter nbconvert --to script etl_test.ipynb --output-dir ../etl --output transform.py
+#get_ipython().system('jupyter nbconvert --to script etl_test.ipynb --output-dir ../etl --output transform.py')
+

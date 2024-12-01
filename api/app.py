@@ -329,4 +329,21 @@ def build_elev_metrics_dict(elev_metrics):
                                 "MaxElevation": metric[5],
                                })
     meta_dict = {
-                "title":"G
+                "title":"Garmin device - Elevation metrics",
+                "Access time": datetime.now().strftime("%d/%m/%Y %H:%M:%S"),
+                "Num of records":len(elev_metrics_dict),
+                "data":{
+                    "Elevation id":{}
+                }
+    }
+    data_dict = {
+                "meta":meta_dict,
+                "data":elev_metrics_dict
+    }
+    
+    return(data_dict)
+
+    
+##################################################################################
+if __name__ == '__main__':
+    app.run(debug=False)

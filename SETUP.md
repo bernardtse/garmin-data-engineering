@@ -77,4 +77,4 @@ curl http://127.0.0.1:5000/
 Refer to the [`API documentation`](docs/API_USAGE.md) for more information on available endpoints and their usage.
 
 ### Conclusion
-You have successfully set up the Garmin Data Engineering project environment, initialised 
+You have successfully set up the Garmin Data Engineering project environment, initialised the database, and started the Flask API server. Explore the API endpoints to interact with the activity metrics data.

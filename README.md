@@ -84,4 +84,5 @@ We would like to thank all contributors and participants who have made this proj
 
 - [Aysha Gheewala](https://github.com/AyshaGheewala)
 - [Mohammed Nawaz](https://github.com/MoNawaz101)
-- [Sum Yeung Bernard Tse](https://github.com/
+- [Sum Yeung Bernard Tse](https://github.com/bernardtse)
+- [Nida Ballinger-Chaudhary](https://github.com/NidaB-C)

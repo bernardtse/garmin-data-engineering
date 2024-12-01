@@ -39,4 +39,53 @@ function visitAPI(linkval) {
         if (isValidDate(i3a.value) && isValidDate(i3b.value)) {
             window.open(`/api/activities/date/${i3a.value}/${i3b.value}`, "_blank");
         } else {
-            alert("Please enter 
+            alert("Please enter valid dates in YYYY-MM-DD format.");
+        }
+    }
+    else if (linkval === 'link4') {
+        const i4 = document.getElementById("i4");
+    
+        // Regular expression to check for "AT" followed by 3 digits
+        const regex = /^AT\d{3}$/;
+    
+        // Validate the input value using the regex
+        if (regex.test(i4.value)) {
+            window.open(`/api/activities/activity-type/${i4.value}`, "_blank");
+        } else {
+            alert("Please enter a valid value in the format 'AT' followed by 3 digits (e.g., AT001).");
+        }
+    }
+    else if (linkval === 'link5') {
+        const i5 = document.getElementById("i5");
+        // Check if i5 is a positive number greater than 0
+        if (i5.value > 0) {
+            window.open(`/api/performance-metrics/limit/${i5.value}`, "_blank");
+        } else {
+            alert("Please enter a number greater than 0.");
+        }
+    }
+    else if (linkval === 'link6') {
+        const i6 = document.getElementById("i6");
+        // Check if i6 is a positive number greater than 0
+        if (i6.value > 0) {
+            window.open(`/api/lap-metrics/limit/${i6.value}`, "_blank");
+        } else {
+            alert("Please enter a number greater than 0.");
+        }
+    }
+    else if (linkval === 'link7') {
+        const i7 = document.getElementById("i7");
+        // Check if i7 is a positive number greater than 0
+        if (i7.value > 0) {
+            window.open(`/api/elev-metrics/limit/${i7.value}`, "_blank");
+        } else {
+            alert("Please enter a number greater than 0.");
+        }
+    }
+}
+
+function showPopUp() {popup = document.getElementById("popup");
+popup.style.display = "block";}
+
+function closePopUp() {popup = document.getElementById("popup");
+popup.style.display = "none";}
