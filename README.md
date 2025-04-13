@@ -25,13 +25,13 @@ Our motivation is rooted in the belief that well-structured and accessible data 
 
 - **ETL Workflow**: Implements a robust Extract, Transform, Load (ETL) process to ingest and refine fitness activity data.
 - **Database Design**: Utilises a relational database structure with multiple tables to organise data efficiently, allowing for scalability and complex queries.
-- **Data Analysis Tools**: Includes methods for reading data from the database, enabling analysis and visualisation through Pandas DataFrames and a Flask API for broader access.
+- **Data Analysis Tools**: Includes methods for reading data from the database, enabling analysis and visualisation through pandas DataFrames and a Flask API for broader access.
 - **Privacy and Ethics**: Adheres to strict privacy guidelines, ensuring no personally identifiable information (PII) is stored or analysed.
 
 ## 3. Technical Stack
 
 - **SQLite**: Chosen for its lightweight nature and ease of integration with Python, ideal for this project's scale and objectives.
-- **Pandas**: For data manipulation and transformation during the ETL process.
+- **pandas**: For data manipulation and transformation during the ETL process.
 - **Flask**: To provide an API interface for accessing and interacting with the stored data.
 
 ## 4. Getting Started
@@ -74,7 +74,7 @@ We are committed to maintaining the highest standards of privacy and ethics. The
 ## 8. References
 
 - **Data Source**: Garmin Connect (Data provided by an individual under consent)
-- **Python Libraries**: Pandas, SQLite3, Flask, nbconvert
+- **Python Libraries**: pandas, SQLite3, Flask, nbconvert
 
 ## 9. Acknowledgments
 
